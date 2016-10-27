@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  #skip_before_action :require_login, only: [:new, :create]
 
   def new
   end
@@ -33,6 +34,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.delete
+    redirect_to root_path
   end
 
   private
