@@ -1,6 +1,6 @@
-class CreateCleaningdTools < ActiveRecord::Migration[5.0]
+class CreateTools < ActiveRecord::Migration[5.0]
   def change
-    create_table :cleaningd_tools do |t|
+    create_table :tools do |t|
       t.string :name
       t.integer :difficulty
       t.integer :safety_level
@@ -8,6 +8,7 @@ class CreateCleaningdTools < ActiveRecord::Migration[5.0]
       t.boolean :rented_out
       t.date :rental_window
       t.string :condition
+      t.integer :listing_id
 
       t.timestamps
     end

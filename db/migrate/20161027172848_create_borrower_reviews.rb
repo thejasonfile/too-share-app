@@ -1,4 +1,4 @@
-class CreateBorrowerReviews < ActiveRecord::Migration[5.0]
+class CreateReviews < ActiveRecord::Migration[5.0]
   def change
     create_table :borrower_reviews do |t|
       t.integer :rating
