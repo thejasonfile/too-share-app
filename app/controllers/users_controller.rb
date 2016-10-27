@@ -1,5 +1,3 @@
-
-
 class UsersController < ApplicationController
 
   def new
@@ -20,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
     @user.update(name: params[:user][:name], email: params[:user][:email], location: params[:user][:location])
     if @user.valid?
       @user.save
-      redirect_to users_path(@user)
+      redirect_to user_path(@user)
     else
       render :edit
     end 
