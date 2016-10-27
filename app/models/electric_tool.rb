@@ -1,0 +1,2 @@
+class ElectricTool < ApplicationRecord
+end

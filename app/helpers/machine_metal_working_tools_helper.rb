@@ -1,0 +1,2 @@
+module MachineMetalWorkingToolsHelper
+end

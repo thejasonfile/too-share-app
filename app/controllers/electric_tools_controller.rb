@@ -1,0 +1,2 @@
+class ElectricToolsController < ApplicationController
+end

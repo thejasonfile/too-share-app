@@ -1,0 +1,2 @@
+class LenderLocation < ApplicationRecord
+end

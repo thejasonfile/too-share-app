@@ -1,0 +1,2 @@
+class BorrowerReview < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class MachineMetalWorkingToolsController < ApplicationController
+end

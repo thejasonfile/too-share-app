@@ -1,0 +1,2 @@
+class GardeningTool < ApplicationRecord
+end

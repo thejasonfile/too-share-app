@@ -1,0 +1,2 @@
+class GasPoweredTool < ApplicationRecord
+end

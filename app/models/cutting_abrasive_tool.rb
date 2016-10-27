@@ -1,0 +1,2 @@
+class CuttingAbrasiveTool < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class HandToolsController < ApplicationController
+end

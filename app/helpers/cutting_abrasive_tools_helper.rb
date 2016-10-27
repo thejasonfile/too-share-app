@@ -1,0 +1,2 @@
+module CuttingAbrasiveToolsHelper
+end

@@ -1,0 +1,2 @@
+class GasPoweredToolsController < ApplicationController
+end

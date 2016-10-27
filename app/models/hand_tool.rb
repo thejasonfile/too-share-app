@@ -1,0 +1,2 @@
+class HandTool < ApplicationRecord
+end

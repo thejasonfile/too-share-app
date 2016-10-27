@@ -1,0 +1,2 @@
+module LenderLocationsHelper
+end

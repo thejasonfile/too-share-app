@@ -1,0 +1,2 @@
+class MachineMetalWorkingTool < ApplicationRecord
+end
