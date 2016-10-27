@@ -1,2 +1,0 @@
-class CuttingAbrasiveToolsController < ApplicationController
-end

@@ -1,2 +1,0 @@
-class GardeningTool < ApplicationRecord
-end

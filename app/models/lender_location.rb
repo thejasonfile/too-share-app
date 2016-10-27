@@ -1,2 +1,0 @@
-class LenderLocation < ApplicationRecord
-end

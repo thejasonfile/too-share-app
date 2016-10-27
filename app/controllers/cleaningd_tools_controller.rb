@@ -1,2 +1,0 @@
-class CleaningdToolsController < ApplicationController
-end

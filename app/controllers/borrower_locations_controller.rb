@@ -1,2 +1,0 @@
-class BorrowerLocationsController < ApplicationController
-end

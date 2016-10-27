@@ -1,2 +1,0 @@
-class GardeningToolsController < ApplicationController
-end

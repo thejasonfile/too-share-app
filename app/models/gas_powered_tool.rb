@@ -1,2 +1,0 @@
-class GasPoweredTool < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class MachineMetalWorkingToolsController < ApplicationController
-end

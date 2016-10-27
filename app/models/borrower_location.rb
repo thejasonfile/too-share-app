@@ -1,2 +1,0 @@
-class BorrowerLocation < ApplicationRecord
-end

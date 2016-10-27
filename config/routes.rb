@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :transactions
   resources :borrower_reviews
   resources :lender_reviews
