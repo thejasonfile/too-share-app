@@ -1,2 +1,0 @@
-class LendersController < ApplicationController
-end

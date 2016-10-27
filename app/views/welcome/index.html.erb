@@ -1,0 +1,13 @@
+Hello. Join us!
+
+<%= form_tag sessions_path do %>
+<%= label_tag :email %>
+<%= text_field_tag 'user[email]' %>
+<br>
+<%= label_tag :password %>
+<%= password_field_tag 'user[password]' %>
+<br>
+<%= submit_tag "Log In" %>
+<% end %>
+
+<a href="/users/new">Don't have an account? Sign up!</a>
