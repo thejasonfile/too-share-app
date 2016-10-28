@@ -11,9 +11,10 @@
 
 <h3>Listings you are a part of:</h3>
 
+<%= button_to 'New Listing', new_listing_path, :method => :get  %>
+
 <hr />
 
 <p><%= button_to 'Edit User', edit_user_path(@user), :method => :get  %>
   <%= button_to 'Log Out', session_path(@user), :method => :delete  %>
   <%= button_to 'Delete Account', user_path(@user), :method => :delete  %></p>
-
