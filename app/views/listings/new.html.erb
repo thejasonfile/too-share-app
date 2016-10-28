@@ -1,29 +1,23 @@
 New Listing
 
-
-<%= form_tag listings_path do %>
-<%= label_tag :name %>
-<%= text_field_tag 'listing[name]' %>
+<%=form_for @listing do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
 <br>
-<%= label_tag :cost %>
-<%= number_field_tag 'listing[cost]' %>
+<%= f.label :cost %>
+<%= f.number_field :cost %>
 <br>
-<%= label_tag :notes %>
-<%= text_field_tag 'listing[notes]' %>
-
+<%= f.label :notes %>
+<%= f.text_field :notes %>
+<br>
 What tool do you want?
-<%= select_tag "tool[name]", options_from_collection_for_select(@lender.tools, "id") %>
 <br>
 
-<!-- <form action="/restaurant/<%= @restaurant.id %>/adduser" method="post">
-    <select name="user">
-      <%@valid_users.each do |user| %>
-        <option value="<%=user.name %>"><%=user.name%></option>
-      <%end%>
-    </select>
-    <input class="submit" type="submit" value="Submit">
-  </form> -->
+<select name="listing[tool_id]">
+  <% @tools.map do |tool| %><option value="<%=tool.id%>">
+    <%=tool.name%></option>
+    <%end%>
+  </select>
+    <%=f.submit%>
 
-
-<%= submit_tag "Submit Listing" %>
-<% end %>
+  <%end%>
