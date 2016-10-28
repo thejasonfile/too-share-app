@@ -38,4 +38,8 @@ class ToolsController < ApplicationController
   def tool_params(*args)
     params.require(:tool).permit(*args)
   end
+
+  def tool_available?
+
+  end
 end
