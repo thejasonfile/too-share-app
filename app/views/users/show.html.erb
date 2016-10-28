@@ -10,18 +10,16 @@
 <hr />
 
 <h3>Your tools:</h3>
-
+<ul>
+<% @user.tools.each do |tool| %>
+  <li><%= link_to(tool.name, tool_path(tool)) %></li>
+  <% end %>
+</ul>
 <hr />
 
 <h3>Your listings:</h3>
-<%  @user.tools.each do |tool|%>
-<% tool.listing.each do |listing|%>
-  <%=listing.name%>
-  <%end%>
-  <%end%><br>
 
-
-
+<br>
 <hr />
 
 <p><%= button_to 'Edit User', edit_user_path(@user), :method => :get  %>

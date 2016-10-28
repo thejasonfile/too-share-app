@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(name: params[:user][:name], email: params[:user][:email], location: params[:user][:location],password: params[:user][:password],password_confirmation: params[:user][:password_confirmation])
+      byebug
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
     if session[:user_id] == params[:id].to_i
       @user = User.find(params[:id])
     else
