@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028020406) do
+ActiveRecord::Schema.define(version: 20161028143220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20161028020406) do
     t.integer  "cost"
     t.string   "notes"
     t.integer  "lender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "remove_listing_id_from_tools", force: :cascade do |t|
+    t.integer  "listing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,11 +49,11 @@ ActiveRecord::Schema.define(version: 20161028020406) do
     t.integer  "safety_level"
     t.string   "portability"
     t.string   "condition"
-    t.integer  "listing_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.date     "availability_start"
     t.date     "availability_end"
+    t.integer  "lender_id"
   end
 
   create_table "transactions", force: :cascade do |t|
