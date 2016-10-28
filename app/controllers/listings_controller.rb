@@ -5,13 +5,16 @@ class ListingsController < ApplicationController
   end
 
   def new
+
   end
 
   def create
-    listing = Listing.create(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name])
-    if listing.save
-      @user=listing.lender_id
+    @listing = Listing.create(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name])
+    # byebug
+    if @listing.save
+      @user=User.find(@listing.tool.lender_id)
       redirect_to user_path(@user)
+      # redirect_to root_path
     else
       render new_listing_path
     end
@@ -43,7 +46,7 @@ class ListingsController < ApplicationController
   end
 
   private
-  def listing_params
+  def listing_params(*args)
     params.require(:listing).permit(*args)
   end
 end

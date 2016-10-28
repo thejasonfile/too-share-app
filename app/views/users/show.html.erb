@@ -10,12 +10,17 @@
 <hr />
 
 <h3>Your tools:</h3>
-  
+
 <hr />
 
 <h3>Your listings:</h3>
+<%  @user.tools.each do |tool|%>
+<% tool.listing.each do |listing|%>
+  <%=listing.name%>
+  <%end%>
+  <%end%><br>
 
-<%= button_to 'New Listing', new_listing_path, :method => :get  %>
+
 
 <hr />
 
