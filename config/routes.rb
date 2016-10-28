@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :rentals
   resources :listings
   resources :tools
+  post '/products/add', to: 'products#add'
 
 
 
