@@ -12,8 +12,17 @@ New Listing
 <%= text_field_tag 'listing[notes]' %>
 
 What tool do you want?
-<%= select_tag "tool[id]", options_from_collection_for_select(@lender.tool, "id") %>
+<%= select_tag "tool[name]", options_from_collection_for_select(@lender.tools, "id") %>
 <br>
+
+<!-- <form action="/restaurant/<%= @restaurant.id %>/adduser" method="post">
+    <select name="user">
+      <%@valid_users.each do |user| %>
+        <option value="<%=user.name %>"><%=user.name%></option>
+      <%end%>
+    </select>
+    <input class="submit" type="submit" value="Submit">
+  </form> -->
 
 
 <%= submit_tag "Submit Listing" %>
