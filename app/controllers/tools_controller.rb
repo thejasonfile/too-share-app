@@ -9,7 +9,6 @@ class ToolsController < ApplicationController
   end
   
   def create
-    byebug
     tool = Tool.create(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], availability_start: params[:tool][:availability_start], availability_end: params[:tool][:availability_end])
     if tool.save
       redirect_to tool_path(tool)
@@ -37,5 +36,9 @@ class ToolsController < ApplicationController
   private
   def tool_params(*args)
     params.require(:tool).permit(*args)
+  end
+
+  def tool_available?
+    
   end
 end

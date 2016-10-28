@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       redirect_to new_user_path
     elsif user.authenticate(params[:user][:password])
       session[:user_id] = user.id
+      session[:cart] = cart
       redirect_to user_path(user)
     else
       redirect_to login_path
