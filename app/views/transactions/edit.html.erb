@@ -1,9 +1,10 @@
-Items currently in your cart:<br>
+
+Delete item:<br>
 <br>
 <% if @cart.size > 0%>
    <% @cart.each do |item| %>
    <p><%= item %></p>
    <% end %>
 <%else%>
-  You have nothing in your cart!
+  You have nothing in your cart to delete!
 <%end  %>

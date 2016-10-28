@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   #skip_before_action :require_login, only: [:new, :create]
+  
 
   def new
   end
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       render :edit
-    end 
+    end
   end
 
   def destroy

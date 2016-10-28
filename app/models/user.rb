@@ -8,4 +8,13 @@ class User < ApplicationRecord
 
   # validates :password, presence: true
   # validates :password_confirmation, presence: true
+
+  def name=(name)
+    @name = name.capitalize!
+  end
+
+  def name
+    @name
+  end
+
 end
