@@ -10,7 +10,9 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.create(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name])
-    # byebug
+    @user = User.find_by(session[:user_id])
+    # listing.tool_id = @user
+    listing.save
     if @listing.save
       @user=User.find(@listing.tool.lender_id)
       redirect_to user_path(@user)
