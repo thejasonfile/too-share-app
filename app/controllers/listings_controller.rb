@@ -5,14 +5,19 @@ class ListingsController < ApplicationController
   end
 
   def new
+      @listing = Listing.new
+      user= User.find(session[:user_id])
+      @tools = user.tools
+      # byebug
 
   end
 
   def create
-    @listing = Listing.create(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name])
-    # byebug
+    @listing = Listing.create(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name], tool_id: params[:listing][:tool_id])
+    @user = User.find(session[:user_id])
+    @listing.save
     if @listing.save
-      @user=User.find(@listing.tool.lender_id)
+      # @user=User.find(@listing.tool.lender_id)
       redirect_to user_path(@user)
       # redirect_to root_path
     else
@@ -21,6 +26,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
