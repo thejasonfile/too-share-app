@@ -2,19 +2,11 @@
 
 <%= form_for @review do |f| %>
   <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
   </p>
-  <p><%= f.label :safety_level %>
-    <%= f.select :safety_level, [['safe'], ['not-so-safe'], ['be careful'], ['dangerous'], ['life-threatening']] %>
-  </p>
-  <p>
-    <%= f.label :portability %>
-    <%= f.text_field :portability %>
-  </p>
-  <p>
-    <%= f.label :condition %>
-    <%= f.text_field :condition %>
+  <p><%= f.label :content %>
+    <%= f.text_field :content %>
   </p>
   <p>
     <%= f.submit %>

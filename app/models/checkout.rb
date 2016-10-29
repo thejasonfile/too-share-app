@@ -1,7 +1,7 @@
 class Checkout < ApplicationRecord
     has_many :rentals
     helper_method :add
-    
+
     def add(item)
       # byebug
       #add from the list of search results?
