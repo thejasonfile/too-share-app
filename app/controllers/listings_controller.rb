@@ -1,15 +1,17 @@
 class ListingsController < ApplicationController
 
   def index
-    @listings = Listing.all
+    if params[:search]
+      @listings = Listing.search(params[:search])
+    else
+      @listings = Listing.all
+    end
   end
 
   def new
       @listing = Listing.new
       user= User.find(session[:user_id])
       @tools = user.tools
-      # byebug
-
   end
 
   def create
