@@ -5,9 +5,8 @@ class Listing < ApplicationRecord
   def self.search(search)
      sql = <<-SQL
       SELECT * FROM listings 
-      JOIN tools ON listings.tool_id = tools.id
-      WHERE listings.name 
-      LIKE '%#{search}%' OR tools.name LIKE '%#{search}%'
+      WHERE UPPER(listings.name)
+      LIKE UPPER('%#{search}%')
       SQL
     self.find_by_sql(sql)
   end
