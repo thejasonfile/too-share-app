@@ -4,8 +4,8 @@
   <%= f.label :name %>
   <%= f.text_field :name, :value => @listing.name %> <br />
   <%= f.label :cost %>
-  <%= f.text_field :email, :value => @listing.cost %> <br />
+  <%= f.text_field :cost, :value => @listing.cost %> <br />
   <%= f.label :notes %>
-  <%= f.text_field :notes, :value => @user.location %> <br />
+  <%= f.text_field :notes, :value => @listing.notes %> <br />
   <%= f.submit %>
 <% end %>

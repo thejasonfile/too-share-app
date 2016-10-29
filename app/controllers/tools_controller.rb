@@ -23,15 +23,25 @@ class ToolsController < ApplicationController
   end
 
   def edit
-
+    @tool = Tool.find(params[:id])
   end
 
   def update
-
+    @tool = Tool.find(params[:id])
+    @tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition])
+    if @tool.valid?
+      @tool.save
+      redirect_to tool_path(@tool)
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    tool = Tool.find(params[:id])
+    @user = User.find(session[:user_id])
+    tool.delete
+    redirect_to user_path(@user)
   end
 
   private

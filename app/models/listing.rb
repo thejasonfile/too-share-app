@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-  has_one :tool
+has_one :tool
   validates :name, presence: true
   validates :cost, presence: true
   validates :notes, length: {in: 1..250}
