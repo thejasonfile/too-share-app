@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028180218) do
+ActiveRecord::Schema.define(version: 20161029160430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161028180218) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "tool_id"
   end
 
   create_table "tools", force: :cascade do |t|
@@ -44,8 +45,10 @@ ActiveRecord::Schema.define(version: 20161028180218) do
     t.integer  "safety_level"
     t.string   "portability"
     t.string   "condition"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.date     "availability_start"
+    t.date     "availability_end"
     t.integer  "lender_id"
   end
 
