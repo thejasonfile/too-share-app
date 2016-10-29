@@ -18,9 +18,11 @@
 <hr />
 
 <h3>Your listings:</h3>
+<ul>
   <% @user.tools.each do |tool| %>
-    <%= tool.listing %>
+    <li><%= tool.listing %></li>
   <% end %>
+</ul>
 <br>
 <hr />
 
