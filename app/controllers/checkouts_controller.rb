@@ -1,15 +1,17 @@
-class TransactionsController < ApplicationController
-
+class CheckoutsController < ApplicationController
   def index
     @cart = cart
   end
 
-  def add
-    #add from the list of search results?
-    #should tool have price?
-    @cart << params[:tool]
-    render :index
-  end
+  # def add(item)
+  #   # byebug
+  #   #add from the list of search results?
+  #   #should tool have price?
+  #   @cart = cart
+  #   @cart << item
+  #
+  #   # render :index
+  # end
 
   def show
 
@@ -34,4 +36,8 @@ class TransactionsController < ApplicationController
   # def destroy
     #do we need to destroy cart upon logout or does it happen when you delete session?
   # end
+  private
+  def checkout_params(*args)
+    params.require(:checkout).permit(*args)
+  end
 end

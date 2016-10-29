@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cart
-    session[:cart] ||= []#means it is either the cart so far, or empty array
+    cart = (session[:cart] ||= [])#means it is either the cart so far, or empty array
   end
 
   private
