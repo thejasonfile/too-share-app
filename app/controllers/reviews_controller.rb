@@ -5,11 +5,12 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    user= User.find(session[:user_id])
+    @tools = user.tools
   end
 
   def create
-    @review = Review.create!(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:content])
-    @review.tool_id = 2
+    @review = Review.create!(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id])
     if @review.save
       redirect_to review_path(@review)
     else

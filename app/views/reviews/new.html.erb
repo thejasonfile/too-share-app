@@ -9,6 +9,16 @@
     <%= f.text_field :content %>
   </p>
   <p>
+    What tool do you want to review?
+    <br>
+    <select name="review[tool_id]">
+      <% @tools.map do |tool| %><option value="<%=tool.id%>">
+        <%=tool.name%></option>
+        <%end%>
+      </select>
+  
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

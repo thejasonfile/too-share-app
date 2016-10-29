@@ -1,11 +1,19 @@
 <h2>Hi, <%=@user.name%></h2>
 
+<h3>Search for a listing:</h3>
+
+<%= form_tag listings_path, :method => :get do %>
+  <%= label_tag "Search" %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
 <h3>Personal Information</h3>
 <ul>
   <li>Address: <%= @user.location %></li>
   <li>Email: <%= @user.email %></li>
 </ul>
-<%= button_to 'Lend a Tool', new_tool_path, :method => :get %>
+<%= button_to 'Add a Tool', new_tool_path, :method => :get %>
 <hr />
 
 <h3>Your tools:</h3>

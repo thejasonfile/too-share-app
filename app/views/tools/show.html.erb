@@ -6,6 +6,14 @@
     <li>Condition: <%= @tool.condition %></li>
   </ul>
 
+Reviews:<br>
+  <% @tool.reviews.each do |review| %>
+  Rating:<%=review.rating  %><br>
+  Content: <%= review.content%><br>
+  <br>
+  <% end %>
+  <br>
+
 
   <%= button_to 'Edit Tool', edit_tool_path(@tool), :method => :get %>
   <%= button_to 'Delete Tool', tool_path(@tool), :method => :delete  %>
