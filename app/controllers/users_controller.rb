@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
 
 
   def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
 
     else
-      redirect_to root_path
+      redirect_to user_path(session[:user_id])
     end
   end
 

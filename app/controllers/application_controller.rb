@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  #before_action :require_login, except: [:current_user, :logged_in?]
+  before_action :require_login, except: [:current_user, :logged_in?]
   helper_method :current_user
   helper_method :cart
 
