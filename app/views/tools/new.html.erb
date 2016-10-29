@@ -1,23 +1,18 @@
 <h1>Create a new Tool</h1>
 
 
-<%= form_for @tool do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p><%= f.label :safety_level %>
-    <%= f.select :safety_level, [['safe'], ['not-so-safe'], ['be careful'], ['dangerous'], ['life-threatening']] %>
-  </p>
-  <p>
-    <%= f.label :portability %>
-    <%= f.text_field :portability %>
-  </p>
-  <p>
-    <%= f.label :condition %>
-    <%= f.text_field :condition %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+<%= form_tag tools_path do %>
+<%= label_tag :name %>
+<%= text_field_tag 'tool[name]' %>
+<br>
+<%= label_tag "safety level" %>
+<%=select_tag "tool[safety_level]", options_for_select(['safe','not-so-safe','be careful','dangerous','life-threatening'], 'safe')%>
+<br>
+<%= label_tag :portability %>
+<%= text_field_tag 'tool[portability]' %>
+<br>
+<%= label_tag :condition %>
+<%= text_field_tag 'tool[condition]' %>
+<br>
+<%= submit_tag "Sign up!" %>
 <% end %>

@@ -15,20 +15,19 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = Listing.create(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name], tool_id: params[:listing][:tool_id])
+    @listing = Listing.new(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name], tool_id: params[:listing][:tool_id])
     @user = User.find(session[:user_id])
-    @listing.save
     if @listing.save
-      # @user=User.find(@listing.tool.lender_id)
       redirect_to user_path(@user)
-      # redirect_to root_path
     else
       render new_listing_path
     end
   end
 
   def show
+
     @listing = Listing.find(params[:id])
+    @tool = Tool.find(@listing.tool_id)
   end
 
   def edit
@@ -36,10 +35,11 @@ class ListingsController < ApplicationController
   end
 
   def update
+    @user = User.find(session[:user_id])
     @listing = Listing.find(params[:id])
-    @listing.update(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:user][:name])
-    if @user.valid?
-      @user.save
+    @listing.update(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name])
+    if @listing.valid?
+      @listing.save
       redirect_to user_path(@user)
     else
       render :edit
@@ -48,7 +48,7 @@ class ListingsController < ApplicationController
 
   def destroy
     listing = Listing.find(params[:id])
-    @user = User.find(listing.tool.lender_id)
+    @user = User.find(session[:user_id])
     listing.delete
     redirect_to user_path(@user)
   end

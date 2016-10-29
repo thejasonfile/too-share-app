@@ -1,0 +1,13 @@
+<h1>Edit Your Tool</h1>
+
+<%= form_for @tool do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :safety_level %>
+  <%= f.select :safety_level, [['safe'], ['not-so-safe'], ['be careful'], ['dangerous'], ['life-threatening']] %>
+  <%= f.label :portability %>
+  <%= f.text_field :portability %>
+  <%= f.label :condition %>
+  <%= f.text_field :condition %>
+  <%= f.submit %>
+<% end %>
