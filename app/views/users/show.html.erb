@@ -19,8 +19,9 @@
 
 <h3>Your listings:</h3>
 <ul>
-  <% @user.tools.each do |tool| %>
-    <li><%= tool.listing %></li>
+  <% @user.tools.with_listings.map do |tool| %>
+    <li><%= link_to(tool.listing.name, tool.listing(tool.listing)) %></li>
+
   <% end %>
 </ul>
 <br>

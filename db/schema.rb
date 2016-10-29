@@ -45,10 +45,8 @@ ActiveRecord::Schema.define(version: 20161029160430) do
     t.integer  "safety_level"
     t.string   "portability"
     t.string   "condition"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.date     "availability_start"
-    t.date     "availability_end"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "lender_id"
   end
 
