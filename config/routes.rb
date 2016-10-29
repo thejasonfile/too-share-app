@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
+  resources :checkouts
   root 'welcome#index'
   get '/logout', to: 'sessions#destroy'
   resources :users
   resources :sessions
-  resources :transactions
   resources :reviews
   resources :rentals
   resources :listings
   resources :tools
-  post '/products/add', to: 'products#add'
+  post '/checkouts/add', to: 'checkouts#add'
 
 
 

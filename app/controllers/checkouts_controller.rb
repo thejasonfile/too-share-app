@@ -1,14 +1,16 @@
-class TransactionsController < ApplicationController
-
+class CheckoutsController < ApplicationController
   def index
     @cart = cart
   end
 
   def add
+    byebug
     #add from the list of search results?
     #should tool have price?
-    @cart << params[:tool]
-    render :index
+    @cart = cart
+    @cart << params[:listing]
+
+    # render :index
   end
 
   def show
