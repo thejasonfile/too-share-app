@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #skip_before_action :require_login, only: [:new, :create]
-  
+
 
   def new
   end
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
     if session[:user_id] == params[:id].to_i
       @user = User.find(params[:id])
+
     else
       redirect_to root_path
     end
