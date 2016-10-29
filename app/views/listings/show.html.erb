@@ -3,4 +3,4 @@
   <li>Cost: <%= @listing.cost%></li>
   <li>Notes: <%= @listing.notes %></li>
 </ul>
-<%= button_to 'Add To Cart', controller: 'transactions', action: 'add' %>
+<%= button_to 'Add To Cart', controller: 'checkouts', action: 'add(@listing)' %>
