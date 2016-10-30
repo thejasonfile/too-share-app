@@ -11,3 +11,5 @@
 
 <%= button_to 'Edit Listing', edit_listing_path(@listing), :method => :get  %>
 <%= button_to 'Delete Listing', listing_path(@listing), :method => :delete  %></p>
+  
+<%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>
