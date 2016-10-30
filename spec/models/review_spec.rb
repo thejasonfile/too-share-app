@@ -32,11 +32,12 @@ RSpec.describe Review, :type => :model do
     expect(Review.new(content: "old")).not_to be_valid
   end
 
-  it "belongs to one tool" do
-    expect(tool.reviews).to eq(review)
-  end
-  #
-  # it "belongs to one user" dorev
-  #   expect(ride.user).to eq(user)
+  # it "belongs to one tool" do
+  #   expect(tool.reviews).to include(review)
   # end
+
+  it "has a method 'worth_borrowing?' that says if it's worth borrowing" do
+    review = Review.create(:rating => 5, :content => "Did the job")
+    expect(review.worth_borrowing?).to eq("Yep!")
+  end
 end

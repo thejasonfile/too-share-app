@@ -1,9 +1,0 @@
-Items currently in your cart:<br>
-<br>
-<% if @cart.size > 0%>
-   <% @cart.each do |item| %>
-   <p><%= item %></p>
-   <% end %>
-<%else%>
-  You have nothing in your cart!
-<%end  %>
