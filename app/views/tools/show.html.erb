@@ -8,8 +8,10 @@
 
 Reviews:<br>
   <% @tool.reviews.each do |review| %>
-  Rating:<%=review.rating  %><br>
+  Rating:<%= review.rating %><br>
   Content: <%= review.content%><br>
+  <%= link_to "Edit or delete", edit_review_path(review)%>
+  <br>
   <br>
   <% end %>
   <br>
