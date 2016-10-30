@@ -44,11 +44,9 @@ ActiveRecord::Schema.define(version: 20161030181940) do
     t.string   "safety_level"
     t.string   "portability"
     t.string   "condition"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "lender_id"
-    t.integer  "availability_start"
-    t.integer  "availability_end"
   end
 
   create_table "users", force: :cascade do |t|
