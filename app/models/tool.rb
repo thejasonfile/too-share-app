@@ -16,4 +16,11 @@ class Tool < ApplicationRecord
     self.listing
   end
 
+  def average_review
+    ratings_array = self.reviews.map do |review|
+      review.rating
+    end
+    ratings_array.inject(:+)/ratings_array.size
+  end
+
 end
