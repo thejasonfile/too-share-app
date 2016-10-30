@@ -7,4 +7,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :location, presence: true
 
+  def your_tools_without_listings
+    self.tools.select do |tool|
+      tool.listing == nil
+    end
+  end
+
 end

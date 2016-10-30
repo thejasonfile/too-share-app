@@ -10,8 +10,8 @@ class ListingsController < ApplicationController
 
   def new
       @listing = Listing.new
-      user= User.find(session[:user_id])
-      @tools = user.tools
+      @user= User.find(session[:user_id])
+      @tools = @user.tools
   end
 
   def create
