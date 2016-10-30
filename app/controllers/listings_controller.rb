@@ -28,6 +28,7 @@ class ListingsController < ApplicationController
 
     @listing = Listing.find(params[:id])
     @tool = Tool.find(@listing.tool_id)
+    @user = User.find(@tool.lender_id)
   end
 
   def edit

@@ -6,6 +6,7 @@
   <li>Condition: <%= @tool.condition%></li>
   <li>Cost: <%= @listing.cost%></li>
   <li>Notes: <%= @listing.notes %></li>
+  <li>Contact: <%= @user.email%></li>
 </ul>
 
 <%= button_to 'Edit Listing', edit_listing_path(@listing), :method => :get  %>
