@@ -18,5 +18,12 @@ validates :content, length: {in: 1..250}
     self.content.size > 200
   end
 
+  def self.number_of_reviews
+    self.all.size
+  end
+
+  def self.number_of_solid_reviews
+    self.all.select {|review| review.solid_review}.size
+  end
 
 end
