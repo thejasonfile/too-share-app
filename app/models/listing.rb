@@ -17,6 +17,9 @@ has_one :tool
     Tool.find(self.tool_id).name
   end
 
+  # def show_
+  # end
+
 
 
 end
