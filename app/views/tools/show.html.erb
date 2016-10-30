@@ -6,10 +6,13 @@
     <li>Condition: <%= @tool.condition %></li>
   </ul>
 
+Average Review: <%= @tool.average_review   %><br>
+<br>
 Reviews:<br>
   <% @tool.reviews.each do |review| %>
   Rating:<%= review.rating %><br>
   Content: <%= review.content%><br>
+  Worth borrowing? <%= review.worth_borrowing? %><br>
   <%= link_to "Edit or delete", edit_review_path(review)%>
   <br>
   <br>

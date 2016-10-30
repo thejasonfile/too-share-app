@@ -1,6 +1,6 @@
 class Checkout < ApplicationRecord
     has_many :rentals
-    helper_method :add
+    # helper_method :add
     #ugh can we get rid of this whole model
     def add(item)
       # byebug

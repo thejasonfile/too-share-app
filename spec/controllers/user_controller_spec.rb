@@ -21,7 +21,7 @@ RSpec.describe UsersController, :type => :controller do
     end #it
 
     # it "the session id is set to match the user id" do
-    #   expect {post :create, user: FactoryGirl.attributes_for(:user) }.to 
+    #   expect {post :create, user: FactoryGirl.attributes_for(:user) }.to
     # end #it
 
     # it "redirects to user_path if successfully saved" do
