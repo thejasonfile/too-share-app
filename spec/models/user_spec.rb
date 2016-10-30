@@ -2,11 +2,20 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  let(:user) {FactoryGirl.create :user}
+  let(:lender) {FactoryGirl.create :lender}
+  let(:tool) {FactoryGirl.create :tool, :lender_id => lender.id}
+  let(:listing) {FactoryGirl.create :listing, :tool_id => tool.id}
 
   it 'is a valid user' do
-    expect(:user).to be_valid
+    expect(lender).to be_valid
+  end
+
+  it 'has many tools' do
+    expect(lender.tools).to include(tool)
+  end
+
+  it 'has many listings' do
+    expect(lender.listings).to include(listing)
   end
 
 end
-
