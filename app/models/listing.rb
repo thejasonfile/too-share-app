@@ -14,4 +14,8 @@ has_one :tool
     self.find_by_sql(sql)
   end
 
+  def tool_name
+    Tool.find(self.tool_id).name
+  end
+
 end
