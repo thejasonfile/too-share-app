@@ -26,7 +26,7 @@ class Tool < ApplicationRecord
     ratings_array = self.reviews.map do |review|
       review.rating
     end
-    ratings_array.inject(:+)/ratings_array.size
+    ratings_array.inject(:+)/ratings_array.size unless ratings_array.size == 0
   end
 
 end
