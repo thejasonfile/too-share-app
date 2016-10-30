@@ -12,6 +12,12 @@ class Tool < ApplicationRecord
     end
   end
 
+  def self.without_listings
+    self.select do |tool|
+      !(tool.has_listing?)
+    end
+  end
+
   def has_listing?
     self.listing
   end
