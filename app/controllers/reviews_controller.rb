@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
-    #think we don't need this? So there is no template
+    # @review = Review.find(params[:id])
+    # @tool = Tool.find(@review.tool_id)
   end
 
   def new
