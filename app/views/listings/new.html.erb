@@ -1,23 +1,20 @@
 New Listing
 
 <%=form_for @listing do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<br>
-<%= f.label :cost %>
-<%= f.number_field :cost %>
-<br>
-<%= f.label :notes %>
-<%= f.text_field :notes %>
-<br>
-What tool do you want to list?
-<br>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :cost %>
+  <%= f.number_field :cost %>
+  <br>
+  <%= f.label :notes %>
+  <%= f.text_field :notes %>
+  <br>
+  What tool do you want to list?
+  <br>
 
-<select name="listing[tool_id]">
-  <% @tools.map do |tool| %><option value="<%=tool.id%>">
-    <%=tool.name%></option>
-    <%end%>
-  </select>
-    <%=f.submit%>
+  <%= f.select :tool_id, Tool.without_listings.map {|tool| [tool.name, tool.id]} %> 
+  <%=f.submit%>
+      
 
-  <%end%>
+<% end %>
