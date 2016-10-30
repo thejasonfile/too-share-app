@@ -12,14 +12,12 @@
   <tr>
     <th>Listing Name</th>
     <th>Tool</th>
-    <th>Cost</th>
     <th>Notes</th>
   </tr>
 <% @listings.each do |listing| %>
   <tr>
     <td><%= link_to listing.name, listing_path(listing) %></td>
     <td><%= listing.tool_name %></td>
-    <td><%= listing.cost %></td>
     <td><%= listing.notes %></td>
   </tr>
 <%end%>
