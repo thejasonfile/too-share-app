@@ -9,5 +9,7 @@
   <%= f.text_field :portability %>
   <%= f.label :condition %>
   <%= f.text_field :condition %>
+  <%= f.label :availability %>
+  <%= f.select :availability, [["Available"],["Not Available"]] %>
   <%= f.submit %>
 <% end %>

@@ -5,6 +5,7 @@
     <li>Safety Level: <%= @tool.safety_level %></li>
     <li>Portability: <%= @tool.portability %></li>
     <li>Condition: <%= @tool.condition %></li>
+    <li>Availability: <%= @tool.availability %></li>
   </ul>
 
   Average Review: <%= @tool.average_review %><br>
@@ -15,7 +16,9 @@
     Rating:<%= review.rating %><br>
     Content: <%= review.content%><br>
     Worth borrowing? <%= review.worth_borrowing? %><br>
+    <% if @user.id == review.borrower_id %>
     <%= link_to "Edit or delete", edit_review_path(review)%>
+    <% end %>
     <br>
     <br>
     <% end %>
@@ -31,7 +34,4 @@
   <%= button_to 'Edit Tool', edit_tool_path(@tool), :method => :get %>
   <%= button_to 'Delete Tool', tool_path(@tool), :method => :delete  %>
   <% end %>
-  <% if @owner.id !=@tool.lender_id %>
-  <%= button_to 'Review This Tool', new_review_path, :method => :get  %>
-  <% end %><br>
   <%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>

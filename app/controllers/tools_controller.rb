@@ -44,9 +44,11 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
+    @user = User.find(session[:user_id])
   end
 
   def create
+    @user = User.find(session[:user_id])
     @tool = Tool.new(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], lender_id: session[:user_id])
     if @tool.save
       @tool.name = @tool.proper_tool_name(@tool.name)
@@ -72,7 +74,7 @@ class ToolsController < ApplicationController
 
   def update
     tool = Tool.find(params[:id])
-    tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition])
+    tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], availability: params[:tool][:availability])
     if tool.valid?
       tool.name = tool.proper_tool_name(tool.name)
       tool.save

@@ -7,17 +7,17 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @user= User.find(session[:user_id])
-    @tools = @user.tools
+    @tools = Tool.all
   end
 
   def create
-    @review = Review.new(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id])
     @user= User.find(session[:user_id])
+    @review = Review.new(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id], borrower_id: @user.id)
     @tools = @user.tools
   @tool = Tool.find(@review.tool_id)
     if @review.save
 
-      redirect_to tool_path(@tool)
+      redirect_to listing_path(@tool.listing)
     else
       render new_review_path
     end
@@ -33,11 +33,12 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @tool = Tool.find(@review.tool_id)
+    tool = Tool.find(@review.tool_id)
+    @listing = tool.listing
     @review.update(rating: params[:review][:rating], content: params[:review][:content])
     if @review.valid?
       @review.save
-      redirect_to tool_path(@tool)
+      redirect_to listing_path(@listing)
     else
       render :edit
     end
