@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#creates 10 users and gives them a random number of tools between 0 and 5
 10.times do
   user = User.create(name: Faker::Name.name, 
     password: "password", 
@@ -18,3 +19,16 @@
       lender_id: user.id)
   end
 end
+
+#creates between 10 and 30 reviews with lorem content and a random rating
+rand(10..30).times do
+  content = Faker::Lorem.paragraph(2)
+  rating = rand(0..5)
+  tool = Tool.find(rand(1..Tool.all.count))
+  review = Review.create(rating: rating, content: content, tool_id: tool.id)
+end
+
+
+
+
+
