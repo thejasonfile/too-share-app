@@ -23,7 +23,7 @@ class Tool < ApplicationRecord
   end
 
   def average_review
-    if self.reviews != nil
+    if !self.reviews.empty?
       ratings_array = self.reviews.map do |review|
         review.rating
       end
@@ -33,6 +33,6 @@ class Tool < ApplicationRecord
     end
   end
 
-  
+
 
 end
