@@ -2,6 +2,21 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
 
+  def index
+    #@chart_info = Tool.group(:lender_id).count
+
+    sql = <<-SQL 
+      select tools.lender_id, count(*) as count
+      from tools inner join users on tools.lender_id = users.id
+      group by tools.lender_id
+    SQL
+    tools = Tool.find_by_sql(sql)
+    
+    @chart_info = tools.map do |tool|
+      [tool.lender_id, tool.count] 
+    end
+  end
+
   def new
   end
 

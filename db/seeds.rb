@@ -11,7 +11,7 @@
     password: "password", 
     email: Faker::Internet.email, 
     location: '10001')
-  5.times do
+  rand(0..5).times do
     tool = Tool.create(name: Faker::Commerce.product_name, 
       safety_level: 'safe', 
       condition: 'new', 
