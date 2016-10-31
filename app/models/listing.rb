@@ -8,9 +8,12 @@ class Listing < ApplicationRecord
   def self.search(search)
      sql = <<-SQL
       SELECT * FROM listings
-      WHERE UPPER(listings.name)
-      LIKE UPPER('%#{search}%')
+      JOIN tools ON listings.tool_id = tools.id
+      JOIN users ON tools.lender_id = users.id
+      WHERE UPPER(listings.name) LIKE UPPER('%#{search}%')
+      OR users.zip_code = #{search.to_i}
       SQL
+
     self.find_by_sql(sql)
   end
 

@@ -7,9 +7,9 @@ class ListingsController < ApplicationController
       @listings = Listing.all
     end
 
-    if params[:zip_code]
-      @zip_code_search = Listing.by_zip_code(params[:zip_code])
-    end
+    # if params[:zip_code]
+    #   @zip_code_search = Listing.by_zip_code(params[:zip_code])
+    # end
   end
 
 
