@@ -49,9 +49,12 @@ class ToolsController < ApplicationController
   def create
     tool = Tool.new(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], lender_id: session[:user_id])
     if tool.save
-      redirect_to tool_path(tool)
+      tool.name = tool.proper_tool_name(tool.name)
+      tool.save
+      @tool = tool
+      redirect_to tool_path(@tool)
     else
-      render :new
+      render new_tool_path
     end
   end
 
@@ -67,10 +70,12 @@ class ToolsController < ApplicationController
   end
 
   def update
-    @tool = Tool.find(params[:id])
-    @tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition])
-    if @tool.valid?
-      @tool.save
+    tool = Tool.find(params[:id])
+    tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition])
+    if tool.valid?
+      tool.name = tool.proper_tool_name(tool.name)
+      tool.save
+      @tool = tool
       redirect_to tool_path(@tool)
     else
       render :edit

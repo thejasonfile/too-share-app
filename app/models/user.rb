@@ -13,4 +13,13 @@ class User < ApplicationRecord
     end
   end
 
+  def elite?
+    a = user.tools.map {|tool| tool.reviews }
+    a.flatten.map
+  end
+
+  def my_reviews
+    
+  end
+
 end

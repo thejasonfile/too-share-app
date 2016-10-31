@@ -1,10 +1,12 @@
 RSpec.describe Tool, type: :model do
   let(:valid_attributes) do
     {
+      id: 1,
       name: "hammer",
       safety_level: "safe",
       portability: "need car",
       condition: "in good condtion",
+      lender_id: 1
 
     }
   end
@@ -15,9 +17,6 @@ RSpec.describe Tool, type: :model do
   let(:missing_portability) { valid_attributes.except(:portability) }
   let(:missing_condition) { valid_attributes.except(:condition) }
 
-  it "is valid when expected" do
-    expect(Tool.new(valid_attributes)).to be_valid
-  end
 
   it "is invalid without name" do
     expect(Tool.new(missing_name)).to be_invalid
