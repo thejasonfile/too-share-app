@@ -1,0 +1,2 @@
+<%=javascript_include_tag "//google.com/jsapi", "chartkick" %>
+<%= column_chart(Listing.group(:id).count) %>
