@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-
+  
   belongs_to :tool
   validates :name, presence: true
   validates :notes, length: {in: 1..250}
