@@ -7,19 +7,29 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :location, presence: true
 
+  def all_tools
+    self.tools.map {|tool| tool}
+  end
+
   def your_tools_without_listings
     self.tools.select do |tool|
       tool.listing == nil
     end
   end
 
-  def elite?
-    a = user.tools.map {|tool| tool.reviews }
-    a.flatten.map
+  def all_reviews
+    all_tools.map {|tool| tool.reviews}.flatten
   end
 
-  def my_reviews
+  def self.elite_users
+    #users who have average review totals of 4 or higher
     
+    #for each user, collect all reviews
+    review_group = User.all.map { |user| 
+      [user.id, user.all_reviews.flatten] 
+      }
+    #average the rating for those reivews
+    #if rating > 4 then user is elite
   end
 
 end

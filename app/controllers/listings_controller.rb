@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
       @listing = Listing.new
       @user= User.find(session[:user_id])
       @tools = @user.tools
+      @tools_without_listings = @user.your_tools_without_listings
   end
 
   def create
