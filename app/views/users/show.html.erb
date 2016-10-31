@@ -13,6 +13,7 @@
 <h3>Personal Information</h3>
 <ul>
   <li>Address: <%= @user.location %></li>
+  <li>Zip Code: <%= @user.zip_code %></li>
   <li>Email: <%= @user.email %></li>
 </ul>
 <%= button_to 'Add a Tool', new_tool_path, :method => :get %>

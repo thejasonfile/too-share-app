@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
   validates :location, presence: true
+  validates :zip_code, presence: true
+  validates :zip_code, numericality: true
+  validates :zip_code, length: { is: 5 } 
 
   def all_tools
     self.tools.map {|tool| tool}
