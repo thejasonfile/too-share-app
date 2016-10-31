@@ -1,23 +1,29 @@
 <h1>Create a new review</h1>
 
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@review.errors.count, "error") %>
+      prohibited this listing from being saved:
+    </h2>
+
+    <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @review do |f| %>
-  <p>
     <%= f.label :rating %>
     <%= f.number_field :rating %>
-  </p>
-  <p><%= f.label :content %>
+    <br>
+    <%= f.label :content %>
     <%= f.text_field :content %>
-  </p>
-  <p>
+    <br>
     What tool do you want to review?
     <br>
-    <select name="review[tool_id]">
-      <% @tools.map do |tool| %><option value="<%=tool.id%>">
-        <%=tool.name%></option>
-        <%end%>
-    </select>
-  </p>
-  <p>
+    <%= f.select :tool_id, @tools.map {|tool| [tool.name, tool.id]} %>
     <%= f.submit %>
-  </p>
-<% end %>
+  <% end %>
