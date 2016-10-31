@@ -51,7 +51,6 @@ class ToolsController < ApplicationController
     if @tool.save
       @tool.name = @tool.proper_tool_name(@tool.name)
       @tool.save
-      @tool = tool
       redirect_to tool_path(@tool)
     else
       render new_tool_path
@@ -60,6 +59,8 @@ class ToolsController < ApplicationController
 
   def show
     @tool = Tool.find(params[:id])
+    @listing = @tool.listing
+    @owner = User.find(session[:user_id])
     #
     # @tool.reviews << @review
 

@@ -7,22 +7,31 @@
     <li>Condition: <%= @tool.condition %></li>
   </ul>
 
-Average Review: <%= @tool.average_review %><br>
-<br>
-Reviews:<br>
-  <% @tool.reviews.each do |review| %>
-  Rating:<%= review.rating %><br>
-  Content: <%= review.content%><br>
-  Worth borrowing? <%= review.worth_borrowing? %><br>
-  <%= link_to "Edit or delete", edit_review_path(review)%>
+  Average Review: <%= @tool.average_review %><br>
   <br>
-  <br>
+  <% if @tool.reviews.count > 0%>
+  Reviews:<br>
+    <% @tool.reviews.each do |review| %>
+    Rating:<%= review.rating %><br>
+    Content: <%= review.content%><br>
+    Worth borrowing? <%= review.worth_borrowing? %><br>
+    <%= link_to "Edit or delete", edit_review_path(review)%>
+    <br>
+    <br>
+    <% end %>
+    <br>
+    <% end%>
+
+  <% if @tool.listing%>
+  <%= button_to 'View Listing', listing_path(@listing), :method => :get %>
+  <% else %>
+  <%= button_to 'New Listing', new_listing_path, :method => :get  %>
   <% end %>
-  <br>
-
-
+  <% if @owner.id == @tool.lender_id %>
   <%= button_to 'Edit Tool', edit_tool_path(@tool), :method => :get %>
   <%= button_to 'Delete Tool', tool_path(@tool), :method => :delete  %>
-  <%= button_to 'New Listing', new_listing_path, :method => :get  %>
+  <% end %>
+  <% if @owner.id !=@tool.lender_id %>
   <%= button_to 'Review This Tool', new_review_path, :method => :get  %>
+  <% end %><br>
   <%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>

@@ -29,7 +29,10 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @tool = Tool.find(@listing.tool_id)
-    @user = User.find(@tool.lender_id)
+    @owner = User.find(@tool.lender_id)
+    @user = User.find(session[:user_id])
+
+
   end
 
   def edit
