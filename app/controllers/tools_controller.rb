@@ -20,7 +20,6 @@ class ToolsController < ApplicationController
     SQL
     tools = Tool.find_by_sql(sql)
 
-
     @chart_info = tools.map do |tool|
       [User.find(tool.lender_id).name, tool.count]
 
@@ -30,6 +29,17 @@ class ToolsController < ApplicationController
     chart_info = Review.find_by_sql("SELECT rating, count(*) as count FROM reviews GROUP BY rating" )
 
 @user = User.find(session[:user_id])
+
+  #review chart data
+    sql = <<-SQL
+      select reviews.rating, count(*) as count
+      from reviews
+      group by reviews.rating
+      SQL
+      info = Review.find_by_sql(sql)
+    @review_chart = info.map do |review|
+      [review.rating, review.count]
+    end
   end
 
   def new
