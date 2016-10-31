@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
-    # @review = Review.find(params[:id])
-    # @tool = Tool.find(@review.tool_id)
+    chart_info = Review.find_by_sql("SELECT rating, count(*) as count FROM reviews GROUP BY rating" )
+
+
   end
 
   def new

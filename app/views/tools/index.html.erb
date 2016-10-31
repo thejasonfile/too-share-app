@@ -1,2 +1,7 @@
+
 <%=javascript_include_tag "//google.com/jsapi", "chartkick" %>
+
+
+<%= column_chart Tool.chart_info %>
+
 <%= pie_chart(Tool.group(:name).count) %>
