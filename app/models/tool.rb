@@ -33,12 +33,24 @@ class Tool < ApplicationRecord
       ratings_array = self.reviews.map do |review|
         review.rating
       end
-      (ratings_array.inject(:+)).to_f/(ratings_array.size).to_f
+      ((ratings_array.inject(:+)).to_f/(ratings_array.size).to_f).round(1)
     else
       "This has no reviews yet"
     end
   end
 
+  def self.highest_rated
+    sql = <<-SQL
+    SELECT  AVG(reviews.rating) AS tool_rating_average, tools.name
+    FROM reviews
+    JOIN listings ON reviews.tool_id = listings.tool_id
+    JOIN tools ON tools.id = listings.tool_id
+    WHERE reviews.rating >= 4
+    GROUP BY tools.name
+    SQL
+    tools = self.find_by_sql(sql)
+    tools.map {|tool| tool.name}
+  end
 
 
 end

@@ -20,10 +20,11 @@ New Listing
   <%= f.text_field :name %>
   <br>
   <%= f.label :notes %>
-  <%= f.text_field :notes %>
+  <%= f.text_area :notes %>
   <br>
   What tool do you want to list?
   <br>
   <%= f.select :tool_id, @user.your_tools_without_listings.map {|tool| [tool.name, tool.id]} %>
+
   <%=f.submit%>
 <% end %>

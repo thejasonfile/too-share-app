@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:user][:name], email: params[:user][:email], location: params[:user][:location],password: params[:user][:password],password_confirmation: params[:user][:password_confirmation])
+    @user = User.new(name: params[:user][:name], email: params[:user][:email], location: params[:user][:location],password: params[:user][:password],password_confirmation: params[:user][:password_confirmation], zip_code: params[:user][:zip_code])
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(name: params[:user][:name], email: params[:user][:email], location: params[:user][:location])
+    @user.update(name: params[:user][:name], email: params[:user][:email], location: params[:user][:location], zip_code: params[:user][:zip_code])
     if @user.valid?
       @user.save
       redirect_to user_path(@user)
