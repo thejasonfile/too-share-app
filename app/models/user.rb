@@ -18,4 +18,8 @@ class User < ApplicationRecord
     a.flatten.map
   end
 
+  def my_reviews
+    
+  end
+
 end
