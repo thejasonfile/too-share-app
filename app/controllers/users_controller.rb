@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     tools = Tool.find_by_sql(sql)
     
     @chart_info = tools.map do |tool|
-      [tool.lender_id, tool.count] 
+      [User.find(tool.lender_id).name, tool.count] 
     end
   end
 
