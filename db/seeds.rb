@@ -11,7 +11,8 @@
   user = User.create(name: Faker::Name.name,
     password: "password",
     email: Faker::Internet.email,
-    location: '10001')
+    location: Faker::Address.street_address,
+    zip_code: Faker::Address.zip_code)
   rand(0..5).times do
     tool = Tool.create(name: Faker::Commerce.product_name,
       safety_level: 'safe',

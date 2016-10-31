@@ -13,7 +13,6 @@ RSpec.describe Listing, type: :model do
   let(:missing_notes) { valid_attributes.except(:notes) }
 
   it "is valid when expected" do
-    byebug
     expect(Listing.new(valid_attributes)).to be_valid
   end
 

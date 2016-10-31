@@ -6,6 +6,13 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
   validates :location, presence: true
+  validates :zip_code, presence: true
+  validates :zip_code, numericality: true
+  validates :zip_code, length: { is: 5 } 
+
+  def all_tools
+    self.tools.map {|tool| tool}
+  end
 
   def your_tools_without_listings
     self.tools.select do |tool|
@@ -13,13 +20,17 @@ class User < ApplicationRecord
     end
   end
 
-  def elite?
-    a = user.tools.map {|tool| tool.reviews }
-    a.flatten.map
+  def all_reviews
+    all_tools.map {|tool| tool.reviews}.flatten
   end
 
-  def my_reviews
+  def self.elite_users
+    #users who have average review totals of 4 or higher
     
+    #for each user, collect all reviews
+    #Review.find_by_sql('SELECT tool_id, count(tool_id) FROM reviews GROUP BY tool_id')
+    #average the rating for those reivews
+    #if rating > 4 then user is elite
   end
 
 end

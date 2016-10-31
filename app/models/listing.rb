@@ -14,16 +14,30 @@ class Listing < ApplicationRecord
     self.find_by_sql(sql)
   end
 
+  def find_lender
+    self.tool.lender
+  end
+
   def tool_name
     Tool.find(self.tool_id).name
   end
 
-  def find_tool_lender_id
-    Tool.find(self.tool_id).lender_id
+  def self.by_zip_code(zip_code)
+    sql = <<-SQL
+      SELECT users.zip_code, tools.name FROM listings
+      JOIN tools ON listings.tool_id = tools.id
+      JOIN users ON tools.lender_id = users.id
+      WHERE users.zip_code = #{zip_code}
+    SQL
+    self.find_by_sql(sql)
   end
 
-  def user_owns_listing?
-    session[:user_id] == self.find_tool_lender_id
+  def map_string
+    @map_string = "https://maps.googleapis.com/maps/api/staticmap?center="
+    @map_string += "#{self.find_lender.location}&zoom=13&size=400x400&"
+    @map_string += "markers=color:blue%7Clabel:S"
+
+    @map_string
   end
 
 end

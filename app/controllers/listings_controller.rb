@@ -6,6 +6,10 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+
+    if params[:zip_code]
+      @zip_code_search = Listing.by_zip_code(params[:zip_code])
+    end
   end
 
 
@@ -13,6 +17,7 @@ class ListingsController < ApplicationController
       @listing = Listing.new
       @user= User.find(session[:user_id])
       @tools = @user.tools
+      @tools_without_listings = @user.your_tools_without_listings
   end
 
   def create
@@ -28,7 +33,10 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @tool = Tool.find(@listing.tool_id)
-    @user = User.find(@tool.lender_id)
+    @owner = User.find(@tool.lender_id)
+    @user = User.find(session[:user_id])
+
+
   end
 
   def edit
