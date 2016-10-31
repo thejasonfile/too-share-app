@@ -8,9 +8,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  def analytics
-
-  end
 
   def new
       @listing = Listing.new

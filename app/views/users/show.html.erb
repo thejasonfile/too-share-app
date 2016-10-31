@@ -38,4 +38,5 @@
 
 <p><%= button_to 'Edit User', edit_user_path(@user), :method => :get  %>
   <%= button_to 'Log Out', session_path(@user), :method => :delete  %>
-  <%= button_to 'Delete Account', user_path(@user), :method => :delete  %></p>
+  <%= button_to 'Delete Account', user_path(@user), :method => :delete  %>
+  <%= button_to 'Analytics', tools_path, :method => :get  %></p>
