@@ -37,10 +37,10 @@ class ToolsController < ApplicationController
   end
 
   def create
-    tool = Tool.new(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], lender_id: session[:user_id])
-    if tool.save
-      tool.name = tool.proper_tool_name(tool.name)
-      tool.save
+    @tool = Tool.new(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], lender_id: session[:user_id])
+    if @tool.save
+      @tool.name = @tool.proper_tool_name(@tool.name)
+      @tool.save
       @tool = tool
       redirect_to tool_path(@tool)
     else

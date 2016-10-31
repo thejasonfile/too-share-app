@@ -11,6 +11,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id])
+    @user= User.find(session[:user_id])
+    @tools = @user.tools
   @tool = Tool.find(@review.tool_id)
     if @review.save
 
