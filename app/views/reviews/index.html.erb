@@ -4,4 +4,7 @@ We have <%= @reviews.number_of_reviews %> reviews and counting!
 Plus <%= @reviews.number_of_solid_reviews %> of those reviews were classified as thorough and helpful by our users!
 <br>
 <br>
-Go to our tools page to see reviews by tool!
+See below for rating info! Most of our tools have ratings above 5!
+
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= column_chart Review.group(:rating).count,{library: {hAxis: {title: "Tool Rating"}, vAxis: {title: "Count"}}, :title => "Ratings!", :colors => ["gray"], :id => "Ratings by Count"}  %>

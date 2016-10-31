@@ -29,4 +29,6 @@ class Tool < ApplicationRecord
     ratings_array.inject(:+)/ratings_array.size
   end
 
+  
+
 end
