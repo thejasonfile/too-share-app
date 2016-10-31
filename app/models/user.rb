@@ -25,9 +25,7 @@ class User < ApplicationRecord
     #users who have average review totals of 4 or higher
     
     #for each user, collect all reviews
-    review_group = User.all.map { |user| 
-      [user.id, user.all_reviews.flatten] 
-      }
+    #Review.find_by_sql('SELECT tool_id, count(tool_id) FROM reviews GROUP BY tool_id')
     #average the rating for those reivews
     #if rating > 4 then user is elite
   end
