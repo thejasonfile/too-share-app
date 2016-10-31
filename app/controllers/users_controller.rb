@@ -3,8 +3,6 @@ class UsersController < ApplicationController
 
 
   def index
-    #@chart_info = Tool.group(:lender_id).count
-
     sql = <<-SQL 
       select tools.lender_id, count(*) as count
       from tools inner join users on tools.lender_id = users.id
