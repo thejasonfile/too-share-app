@@ -10,7 +10,7 @@ RSpec.describe Listing, type: :model do
 
 
   let(:missing_name) { valid_attributes.except(:name) }
-  let(:missing_notes) { valid_attributes.except(:safety_level) }
+  let(:missing_notes) { valid_attributes.except(:notes) }
 
   it "is valid when expected" do
     expect(Listing.new(valid_attributes)).to be_valid
@@ -21,6 +21,6 @@ RSpec.describe Listing, type: :model do
   end
 
   it "is invalid without notes" do
-    expect(Listing.new(missing_safety_level)).to be_invalid
+    expect(Listing.new(missing_notes)).to be_invalid
   end
 end

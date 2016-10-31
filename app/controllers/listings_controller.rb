@@ -10,12 +10,12 @@ class ListingsController < ApplicationController
 
   def new
       @listing = Listing.new
-      user= User.find(session[:user_id])
-      @tools = user.tools
+      @user= User.find(session[:user_id])
+      @tools = @user.tools
   end
 
   def create
-    @listing = Listing.new(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name], tool_id: params[:listing][:tool_id])
+    @listing = Listing.new(notes: params[:listing][:notes], name: params[:listing][:name], tool_id: params[:listing][:tool_id])
     @user = User.find(session[:user_id])
     if @listing.save
       redirect_to user_path(@user)
@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
   def update
     @user = User.find(session[:user_id])
     @listing = Listing.find(params[:id])
-    @listing.update(cost: params[:listing][:cost], notes: params[:listing][:notes], name: params[:listing][:name])
+    @listing.update(notes: params[:listing][:notes], name: params[:listing][:name])
     if @listing.valid?
       @listing.save
       redirect_to user_path(@user)

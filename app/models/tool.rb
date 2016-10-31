@@ -12,7 +12,7 @@ class Tool < ApplicationRecord
     end
   end
 
-  def self.without_listings
+  def without_listings
     self.select do |tool|
       !(tool.has_listing?)
     end
@@ -23,10 +23,14 @@ class Tool < ApplicationRecord
   end
 
   def average_review
-    ratings_array = self.reviews.map do |review|
-      review.rating
+    if self.reviews != nil
+      ratings_array = self.reviews.map do |review|
+        review.rating
+      end
+      (ratings_array.inject(:+)).to_f/(ratings_array.size).to_f
+    else
+      "This has no reviews yet"
     end
-    ratings_array.inject(:+)/ratings_array.size
   end
 
   
