@@ -24,31 +24,15 @@
 </table>
 <br />
 
-<h3>Search by zip code</h3>
-<%= form_tag listings_path, :method => :get do %>
-  <%= label_tag "Zip Code" %>
-  <%= text_field_tag :zip_code %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<table>
-  <tr>
-    <th>Listing Name</th>
-    <th>Tool</th>
-    <th>Notes</th>
-  </tr>
-
-</table>
-
-<br />
-
-<iframe
+<% if params[:search] != nil %>
+  <iframe
     width="600"
     height="450"
     frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYV-lwaMb8p0Hz04ILnsVSvHDZD2pZ7rc
-      &q=<%=params[:zip_code]%>" allowfullscreen>
+      &q=<%=params[:search]%>" allowfullscreen>
   </iframe>
+  <% end %>
 
 <br />
 <%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>
