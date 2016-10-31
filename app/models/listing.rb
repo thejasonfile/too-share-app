@@ -25,22 +25,18 @@ class Listing < ApplicationRecord
     Tool.find(self.tool_id).name
   end
 
-  def self.by_zip_code(zip_code)
-    sql = <<-SQL
-      SELECT users.zip_code, tools.name FROM listings
-      JOIN tools ON listings.tool_id = tools.id
-      JOIN users ON tools.lender_id = users.id
-      WHERE users.zip_code = #{zip_code}
-    SQL
-    self.find_by_sql(sql)
-  end
+  # def self.by_zip_code(zip_code)
+  #   sql = <<-SQL
+  #     SELECT users.zip_code, tools.name FROM listings
+  #     JOIN tools ON listings.tool_id = tools.id
+  #     JOIN users ON tools.lender_id = users.id
+  #     WHERE users.zip_code = #{zip_code}
+  #   SQL
+  #   self.find_by_sql(sql)
+  # end
 
-  def map_string
-    @map_string = "https://maps.googleapis.com/maps/api/staticmap?center="
-    @map_string += "#{self.find_lender.location}&zoom=13&size=400x400&"
-    @map_string += "markers=color:blue%7Clabel:S"
-
-    @map_string
+  def is_integer?
+    self.to_i.to_s == self
   end
 
 end
