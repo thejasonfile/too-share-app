@@ -1,7 +1,18 @@
 class ToolsController < ApplicationController
 
-  def index
+
     def index
+
+      pie = <<-SQL
+        select listings.tool_id, count(*) as count
+        from listings inner join tools on listings.tool_id = tools.id
+        group by listings.tool_id
+        SQL
+        names = Listing.find_by_sql(pie)
+      @tool_name_pie = names.map do |listing|
+        [Tool.find(listing.tool_id).name, listing.count]
+      end
+
     sql = <<-SQL
       select tools.lender_id, count(*) as count
       from tools inner join users on tools.lender_id = users.id
@@ -9,11 +20,16 @@ class ToolsController < ApplicationController
     SQL
     tools = Tool.find_by_sql(sql)
 
+
     @chart_info = tools.map do |tool|
       [User.find(tool.lender_id).name, tool.count]
-    end
-  end
 
+    end
+
+    @reviews = Review.all
+    chart_info = Review.find_by_sql("SELECT rating, count(*) as count FROM reviews GROUP BY rating" )
+
+@user = User.find(session[:user_id])
   end
 
   def new

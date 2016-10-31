@@ -1,1 +1,20 @@
-<%= column_chart Tool.chart_info %>
+<%=javascript_include_tag "//google.com/jsapi", "chartkick" %>
+
+<h1>Number of tools by user names</h1>
+<%= column_chart(@chart_info) %>
+
+<h1>Number and percentage of tools with listings by name</h1>
+<%= pie_chart(@tool_name_pie) %>
+
+<h1>Average review rating by tool</h1>
+We have <%= @reviews.number_of_reviews %> reviews and counting!
+<br>
+<br>
+Plus <%= @reviews.number_of_solid_reviews %> of those reviews were classified as thorough and helpful by our users!
+<br>
+<br>
+See below for rating info! Most of our tools have ratings above 5!
+<%= column_chart Review.group(:rating).count,{library: {hAxis: {title: "Tool Rating"}, vAxis: {title: "Count"}}, :title => "Ratings!", :colors => ["gray"], :id => "Ratings by Count"}  %>
+
+
+<%= button_to 'Return to User Page', user_path(@user), :method => :get%>

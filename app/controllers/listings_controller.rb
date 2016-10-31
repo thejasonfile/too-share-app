@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
     end
   end
 
+
   def new
       @listing = Listing.new
       @user= User.find(session[:user_id])
@@ -25,7 +26,6 @@ class ListingsController < ApplicationController
   end
 
   def show
-
     @listing = Listing.find(params[:id])
     @tool = Tool.find(@listing.tool_id)
     @user = User.find(@tool.lender_id)
@@ -53,6 +53,8 @@ class ListingsController < ApplicationController
     listing.delete
     redirect_to user_path(@user)
   end
+
+
 
   private
   def listing_params(*args)

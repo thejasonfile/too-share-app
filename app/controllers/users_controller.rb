@@ -3,16 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    sql = <<-SQL 
-      select tools.lender_id, count(*) as count
-      from tools inner join users on tools.lender_id = users.id
-      group by tools.lender_id
-    SQL
-    tools = Tool.find_by_sql(sql)
-    
-    @chart_info = tools.map do |tool|
-      [User.find(tool.lender_id).name, tool.count] 
-    end
+
   end
 
   def new
