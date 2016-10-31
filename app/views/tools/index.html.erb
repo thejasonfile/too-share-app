@@ -14,7 +14,8 @@ Plus <%= @reviews.number_of_solid_reviews %> of those reviews were classified as
 <br>
 <br>
 See below for rating info! Most of our tools have ratings above 5!
-<%= column_chart Review.group(:rating).count,{library: {hAxis: {title: "Tool Rating"}, vAxis: {title: "Count"}}, :title => "Ratings!", :colors => ["gray"], :id => "Ratings by Count"}  %>
+<!-- <%= column_chart Review.group(:rating).count,{library: {hAxis: {title: "Tool Rating"}, vAxis: {title: "Count"}}, :title => "Ratings!", :colors => ["gray"], :id => "Ratings by Count"}  %> -->
+<%= column_chart(@review_chart) %>
 
 
 <%= button_to 'Return to User Page', user_path(@user), :method => :get%>

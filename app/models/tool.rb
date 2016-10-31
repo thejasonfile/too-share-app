@@ -6,6 +6,7 @@ class Tool < ApplicationRecord
   validates :safety_level, presence: true
   validates :condition, {presence: true, length: {in: 1..250}}
 
+
   def self.with_listings
     self.select do |tool|
       tool.has_listing?
@@ -22,8 +23,13 @@ class Tool < ApplicationRecord
     self.listing
   end
 
+  def proper_tool_name(tool_name)
+    tool_name.downcase.capitalize
+  end
+
+
   def average_review
-    if self.reviews != nil
+    if !self.reviews.empty?
       ratings_array = self.reviews.map do |review|
         review.rating
       end
@@ -33,6 +39,6 @@ class Tool < ApplicationRecord
     end
   end
 
-  
+
 
 end

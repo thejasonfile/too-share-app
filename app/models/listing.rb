@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-  #has_one :tool
+  
   belongs_to :tool
   validates :name, presence: true
   validates :notes, length: {in: 1..250}
@@ -17,12 +17,5 @@ class Listing < ApplicationRecord
   def tool_name
     Tool.find(self.tool_id).name
   end
-
-  # def show_
-  # end
-
-
-
-
 
 end

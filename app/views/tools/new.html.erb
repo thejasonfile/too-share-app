@@ -1,18 +1,30 @@
-<h1>Create a new Tool</h1>
 
+<% if @tool.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@tool.errors.count, "error") %>
+      prohibited this listing from being saved:
+    </h2>
 
-<%= form_tag tools_path do %>
-<%= label_tag :name %>
-<%= text_field_tag 'tool[name]' %>
-<br>
-<%= label_tag "safety level" %>
-<%=select_tag "tool[safety_level]", options_for_select(['safe','not-so-safe','be careful','dangerous','life-threatening'], 'safe')%>
-<br>
-<%= label_tag :portability %>
-<%= text_field_tag 'tool[portability]' %>
-<br>
-<%= label_tag :condition %>
-<%= text_field_tag 'tool[condition]' %>
-<br>
-<%= submit_tag "Create a tool" %>
+    <ul>
+    <% @tool.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%=form_for @tool do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :portability %>
+  <%= f.text_field :portability %>
+  <br>
+  <%= f.label :condition %>
+  <%= f.text_field :condition %>
+  <br>
+  <%= f.select :safety_level, ['safe','not-so-safe','be careful','dangerous','life-threatening'] %>
+  <br>
+  <%=f.submit%>
 <% end %>

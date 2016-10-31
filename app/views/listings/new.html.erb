@@ -24,9 +24,7 @@ New Listing
   <br>
   What tool do you want to list?
   <br>
+  <%= f.select :tool_id, @user.your_tools_without_listings.map {|tool| [tool.name, tool.id]} %>
 
-  <%= f.select :tool_id, @tools_without_listings.map {|tool| [tool.name, tool.id]} %>
   <%=f.submit%>
-
-
 <% end %>

@@ -20,7 +20,6 @@ class ToolsController < ApplicationController
     SQL
     tools = Tool.find_by_sql(sql)
 
-
     @chart_info = tools.map do |tool|
       [User.find(tool.lender_id).name, tool.count]
 
@@ -30,6 +29,17 @@ class ToolsController < ApplicationController
     chart_info = Review.find_by_sql("SELECT rating, count(*) as count FROM reviews GROUP BY rating" )
 
 @user = User.find(session[:user_id])
+
+  #review chart data
+    sql = <<-SQL
+      select reviews.rating, count(*) as count
+      from reviews
+      group by reviews.rating
+      SQL
+      info = Review.find_by_sql(sql)
+    @review_chart = info.map do |review|
+      [review.rating, review.count]
+    end
   end
 
   def new
@@ -37,11 +47,14 @@ class ToolsController < ApplicationController
   end
 
   def create
-    tool = Tool.new(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], lender_id: session[:user_id])
-    if tool.save
-      redirect_to tool_path(tool)
+    @tool = Tool.new(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition], lender_id: session[:user_id])
+    if @tool.save
+      @tool.name = @tool.proper_tool_name(@tool.name)
+      @tool.save
+      @tool = tool
+      redirect_to tool_path(@tool)
     else
-      render :new
+      render new_tool_path
     end
   end
 
@@ -57,10 +70,12 @@ class ToolsController < ApplicationController
   end
 
   def update
-    @tool = Tool.find(params[:id])
-    @tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition])
-    if @tool.valid?
-      @tool.save
+    tool = Tool.find(params[:id])
+    tool.update(name: params[:tool][:name], safety_level: params[:tool][:safety_level], portability: params[:tool][:portability], condition: params[:tool][:condition])
+    if tool.valid?
+      tool.name = tool.proper_tool_name(tool.name)
+      tool.save
+      @tool = tool
       redirect_to tool_path(@tool)
     else
       render :edit

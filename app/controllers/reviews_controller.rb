@@ -1,21 +1,25 @@
 class ReviewsController < ApplicationController
   def index
-  
+
+
   end
 
   def new
     @review = Review.new
-    user= User.find(session[:user_id])
-    @tools = user.tools
+    @user= User.find(session[:user_id])
+    @tools = @user.tools
   end
 
   def create
-    @review = Review.create!(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id])
+    @review = Review.new(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id])
+    @user= User.find(session[:user_id])
+    @tools = @user.tools
+  @tool = Tool.find(@review.tool_id)
     if @review.save
-      @tool = Tool.find(@review.tool_id)
+
       redirect_to tool_path(@tool)
     else
-      render :new
+      render new_review_path
     end
   end
 
