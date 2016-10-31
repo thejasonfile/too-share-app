@@ -8,16 +8,21 @@
 
 #creates 10 users and gives them a random number of tools between 0 and 5
 10.times do
-  user = User.create(name: Faker::Name.name, 
-    password: "password", 
-    email: Faker::Internet.email, 
+  user = User.create(name: Faker::Name.name,
+    password: "password",
+    email: Faker::Internet.email,
     location: '10001')
   rand(0..5).times do
-    tool = Tool.create(name: Faker::Commerce.product_name, 
-      safety_level: 'safe', 
-      condition: 'new', 
+    tool = Tool.create(name: Faker::Commerce.product_name,
+      safety_level: 'safe',
+      condition: 'new',
       lender_id: user.id)
-  end
+        1.times do
+          listing = Listing.create(notes: Faker::Lorem.sentences(1),
+          name: tool.name,
+          tool_id: tool.id)
+        end
+    end
 end
 
 #creates between 10 and 30 reviews with lorem content and a random rating
@@ -26,9 +31,6 @@ rand(10..30).times do
   rating = rand(0..5)
   tool = Tool.find(rand(1..Tool.all.count))
   review = Review.create(rating: rating, content: content, tool_id: tool.id)
+
+
 end
-
-
-
-
-
