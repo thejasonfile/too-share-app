@@ -18,7 +18,7 @@
       condition: 'new',
       lender_id: user.id)
         1.times do
-          listing = Listing.create(notes: Faker::Lorem.sentences(1),
+          listing = Listing.create(notes: (Faker::Lorem.sentences(1).join(" ")),
           name: tool.name,
           tool_id: tool.id)
         end

@@ -13,7 +13,7 @@ We have <%= @reviews.number_of_reviews %> reviews and counting!
 Plus <%= @reviews.number_of_solid_reviews %> of those reviews were classified as thorough and helpful by our users!
 <br>
 <br>
-See below for rating info! Most of our tools have ratings above 5!
+See below for rating info! Most of our tools have ratings above 3!
 <!-- <%= column_chart Review.group(:rating).count,{library: {hAxis: {title: "Tool Rating"}, vAxis: {title: "Count"}}, :title => "Ratings!", :colors => ["gray"], :id => "Ratings by Count"}  %> -->
 <%= column_chart(@review_chart) %>
 
