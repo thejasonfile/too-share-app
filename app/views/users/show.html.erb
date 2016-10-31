@@ -16,6 +16,15 @@
   <li>Zip Code: <%= @user.zip_code %></li>
   <li>Email: <%= @user.email %></li>
 </ul>
+
+<iframe
+    width="600"
+    height="450"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYV-lwaMb8p0Hz04ILnsVSvHDZD2pZ7rc
+      &q=<%=@user.zip_code%>" allowfullscreen>
+  </iframe>
+
 <%= button_to 'Add a Tool', new_tool_path, :method => :get %>
 <hr />
 
