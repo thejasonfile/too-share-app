@@ -1,16 +1,18 @@
 class RentalsController < ApplicationController
   # def index
   # end
-  # def new
-  # end
-  # def create
-  # end
-  # def show
-  # end
-  # def edit
-  # end
-  # def update
-  # end
-  # def destroy
-  # end
+  def create
+    byebug
+    # Rental.new(borrower_id: session[:user_id], lender_id:)
+  end
+
+  def destroy
+
+  end
+
+  private
+  def listing_params(*args)
+    params.require(:rental).permit(*args)
+  end
+
 end

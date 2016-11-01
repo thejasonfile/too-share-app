@@ -30,11 +30,10 @@ Reviews:<br>
 
 <% if @user.id != @tool.lender_id %>
 <%= button_to 'Review This Listing', new_review_path, :method => :get  %>
+<%= button_to 'Rent This Tool', rentals_path %>
 <% end %>
 <% if @user.id == @tool.lender_id %>
 <%= button_to 'Edit Listing', edit_listing_path(@listing), :method => :get  %>
 <%= button_to 'Delete Listing', listing_path(@listing), :method => :delete  %></p>
 <%= button_to 'Return to Tool', tool_path(@tool), :method => :get %>
 <% end %>
-
-<%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>
