@@ -4,7 +4,6 @@ RSpec.describe Listing, type: :model do
       name: "New Hammer",
       notes: "Be kind to my hammer please",
       tool_id: 1,
-
     }
   end
 
