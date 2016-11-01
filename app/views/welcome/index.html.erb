@@ -1,13 +1,11 @@
-Hello. Join us!
-<body background= "../public/images/background.jpg">
-<%= form_tag sessions_path do %>
-<%= label_tag :email %>
-<%= text_field_tag 'user[email]' %>
-<br>
-<%= label_tag :password %>
-<%= password_field_tag 'user[password]' %>
-<br>
-<%= submit_tag "Log In" %>
-<% end %>
+<head>
+  <link rel="stylesheet" href="/css/welcome.css" />
+</head>
 
-<a href="/users/new">Don't have an account? Sign up!</a>
+<div class="container">
+  <h1>Welcome to T&uuml;l</h1>
+  <h3>Bringing the shared economy to your backyard</h3>
+
+  <a href="/users/new"><button class="btn btn-primary btn-large">Sign Up!</button></a>
+
+</div><!--.container-->
