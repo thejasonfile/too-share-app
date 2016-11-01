@@ -55,13 +55,6 @@ let(:review) {FactoryGirl.create :review, :borrower_id => borrower.id, :tool_id 
     end
   end
 
-  # describe '.number_of_reviews' do
-  #   it "should increment review count if review is saved" do
-  #     expect do
-  #       Review.create(:rating => 5, :content => "Did the job")
-  #     end.to change(Review, :number_of_reviews).by(1)
-  #   end
-  # end
 
 
 end
