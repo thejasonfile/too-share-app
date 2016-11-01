@@ -15,7 +15,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Tul</a>
+      <a class="navbar-brand" href="#">T&uuml;l</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,7 +35,7 @@
               <%= submit_tag "Log In" %>
             <% end %>
           <% else %>
-            <span class="greeting">Hello, <%= User.find(current_user).name %></span><%= button_to 'Log Out', session_path(@user), :method => :delete  %>
+            <span class="greeting">Hello, <%= User.find(current_user).name %></span><%= button_to 'Log Out', session_path(current_user), :method => :delete  %>
           <% end %>
         </ul> 
     </div><!-- /.navbar-collapse -->
