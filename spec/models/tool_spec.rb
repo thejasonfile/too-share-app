@@ -33,4 +33,11 @@ RSpec.describe Tool, type: :model do
   it "is invalid without condition of tool" do
     expect(Tool.new(missing_condition)).to be_invalid
   end
+
+  describe "proper_tool_name" do
+    it "capitalizes a tool name" do
+      tool = Tool.new(name: "tool")
+      expect(tool.proper_tool_name(tool.name)).to eq("Tool")
+    end
+  end
 end
