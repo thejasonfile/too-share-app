@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
 
   def index
     if params[:search]
-      @listings = Listing.search(params[:search]).select {|listing| listing.tool.available? }
+      @listings = APIMaps.search(params[:search]).select {|listing| listing.tool.available? }
     else
       @listings = Listing.all.select {|listing| listing.tool.available? }
     end
