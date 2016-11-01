@@ -2,15 +2,16 @@ class ListingsController < ApplicationController
 
   def index
     if params[:search]
-      @listings = Listing.search(params[:search])
+      @listings = Listing.search(params[:search]).select {|listing| listing.tool.available? }
     else
-      @listings = Listing.all
+      @listings = Listing.all.select {|listing| listing.tool.available? }
     end
+  end
 
     # if params[:zip_code]
     #   @zip_code_search = Listing.by_zip_code(params[:zip_code])
     # end
-  end
+
 
 
   def new

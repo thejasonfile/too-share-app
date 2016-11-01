@@ -17,14 +17,6 @@
   <li>Email: <%= @user.email %></li>
 </ul>
 
-<iframe
-    width="600"
-    height="450"
-    frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYV-lwaMb8p0Hz04ILnsVSvHDZD2pZ7rc
-      &q=<%=@user.zip_code%>" allowfullscreen>
-  </iframe>
-
 <%= button_to 'Add a Tool', new_tool_path, :method => :get %>
 <hr />
 
@@ -50,3 +42,11 @@
   <%= button_to 'Log Out', session_path(@user), :method => :delete  %>
   <%= button_to 'Delete Account', user_path(@user), :method => :delete  %>
   <%= button_to 'Analytics', tools_path, :method => :get  %></p>
+
+  <iframe
+      width="600"
+      height="450"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYV-lwaMb8p0Hz04ILnsVSvHDZD2pZ7rc
+        &q=<%=@user.zip_code%>" allowfullscreen>
+    </iframe>

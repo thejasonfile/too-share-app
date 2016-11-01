@@ -52,5 +52,9 @@ class Tool < ApplicationRecord
     tools.map {|tool| tool.name}
   end
 
+  def available?
+    self.availability == "Available"
+  end
+
 
 end

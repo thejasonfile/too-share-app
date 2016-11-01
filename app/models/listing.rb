@@ -39,4 +39,13 @@ class Listing < ApplicationRecord
     self.to_i.to_s == self
   end
 
+  def available_listing
+    self.tool.availability == "Available"
+  end
+
+  def select_available_listings(list)
+    list.select {|listing| listing.tool.availability == "Available" }
+  end
+
+
 end

@@ -6,6 +6,7 @@
     <li>Portability: <%= @tool.portability %></li>
     <li>Condition: <%= @tool.condition %></li>
     <li>Availability: <%= @tool.availability %></li>
+
   </ul>
 
   Average Review: <%= @tool.average_review %><br>
@@ -16,7 +17,7 @@
     Rating:<%= review.rating %><br>
     Content: <%= review.content%><br>
     Worth borrowing? <%= review.worth_borrowing? %><br>
-    <% if @user.id == review.borrower_id %>
+    <% if @owner.id == review.borrower_id %>
     <%= link_to "Edit or delete", edit_review_path(review)%>
     <% end %>
     <br>
