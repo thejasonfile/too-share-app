@@ -21,7 +21,7 @@
       borrower_id: rand(1..10))
         1.times do
           listing = Listing.create(notes: (Faker::Lorem.sentences(1).join(" ")),
-          name: tool.name,
+          title: tool.name,
           tool_id: tool.id)
         end
     end

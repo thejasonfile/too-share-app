@@ -1,7 +1,7 @@
 RSpec.describe Listing, type: :model do
   let(:valid_attributes) do
     {
-      name: "New Hammer",
+      title: "New Hammer",
       notes: "Be kind to my hammer please",
       tool_id: 1,
     }
@@ -14,7 +14,7 @@ RSpec.describe Listing, type: :model do
   let(:listing) {FactoryGirl.create :listing, :tool_id => tool.id}
 
 
-  let(:missing_name) { valid_attributes.except(:name) }
+  let(:missing_title) { valid_attributes.except(:title) }
   let(:missing_notes) { valid_attributes.except(:notes) }
 
   it "is valid when expected" do
@@ -22,7 +22,7 @@ RSpec.describe Listing, type: :model do
   end
 
   it "is invalid without name" do
-    expect(Listing.new(missing_name)).to be_invalid
+    expect(Listing.new(missing_title)).to be_invalid
   end
 
   it "is invalid without notes" do
