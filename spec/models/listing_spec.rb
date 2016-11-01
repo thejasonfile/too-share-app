@@ -8,7 +8,6 @@ RSpec.describe Listing, type: :model do
     }
   end
 
-
   let(:missing_name) { valid_attributes.except(:name) }
   let(:missing_notes) { valid_attributes.except(:notes) }
 

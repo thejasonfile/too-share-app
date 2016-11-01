@@ -13,7 +13,6 @@ class Listing < ApplicationRecord
       WHERE UPPER(listings.name) LIKE UPPER('%#{search}%')
       OR users.zip_code = #{search.to_i}
       SQL
-
     self.find_by_sql(sql)
   end
 
@@ -23,20 +22,6 @@ class Listing < ApplicationRecord
 
   def tool_name
     Tool.find(self.tool_id).name
-  end
-
-  # def self.by_zip_code(zip_code)
-  #   sql = <<-SQL
-  #     SELECT users.zip_code, tools.name FROM listings
-  #     JOIN tools ON listings.tool_id = tools.id
-  #     JOIN users ON tools.lender_id = users.id
-  #     WHERE users.zip_code = #{zip_code}
-  #   SQL
-  #   self.find_by_sql(sql)
-  # end
-
-  def is_integer?
-    self.to_i.to_s == self
   end
 
 end
