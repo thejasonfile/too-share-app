@@ -1,0 +1,12 @@
+.greeting {
+  font-size: 2em;
+  margin-right: 0.4em;
+}
+
+.button_to {
+  display: inline-block;
+}
+
+.navbar-right {
+  margin-top: 0.6em;
+}
