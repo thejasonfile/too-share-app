@@ -1,21 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Review, :type => :model do
-  let(:tool) {
-    Tool.create(
-      :id => 1,
-      :name => "hacksaw",
-      :safety_level => "safe",
-      :portability => "easy",
-      :condition => "new"
-    )
-  }
+  # let(:tool) {
+  #   Tool.create(
+  #
+  #     :name => "hacksaw",
+  #     :safety_level => "safe",
+  #     :portability => "easy",
+  #     :condition => "new",
+  #     :availability => "Available"
+  #   )
+  # }
+let(:lender) {FactoryGirl.create :lender}
+let(:borrower) {FactoryGirl.create :borrower}
+let(:tool) {FactoryGirl.create :tool, :lender_id => lender.id, :borrower_id => borrower.id }
+let(:review) {FactoryGirl.create :review, :borrower_id => borrower.id, :tool_id => tool.id}
 
-let(:review) {FactoryGirl.create :review}
 
-  # it "is valid with a rating and content" do
-  #   expect(Review.new(rating:4, content: "good", tool_id: 4)).to be_valid
-  # end
+  it "is valid with a rating and content" do
+    expect(review).to be_valid
+  end
 
   it "is not valid without content" do
     expect(Review.new(rating: 4)).not_to be_valid

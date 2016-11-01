@@ -19,6 +19,7 @@ class Listing < ApplicationRecord
 
   def find_lender
     self.tool.lender
+    #test : given this tool, find a lender
   end
 
   def tool_name
