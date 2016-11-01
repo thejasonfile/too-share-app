@@ -17,7 +17,8 @@
     tool = Tool.create(name: Faker::Commerce.product_name,
       safety_level: 'safe',
       condition: 'new',
-      lender_id: user.id)
+      lender_id: user.id,
+      borrower_id: rand(1..10))
         1.times do
           listing = Listing.create(notes: (Faker::Lorem.sentences(1).join(" ")),
           name: tool.name,
@@ -31,7 +32,8 @@ rand(10..30).times do
   content = Faker::Lorem.paragraph(2)
   rating = rand(0..5)
   tool = Tool.find(rand(1..Tool.all.count))
-  review = Review.create(rating: rating, content: content, tool_id: tool.id)
+  review = Review.create(rating: rating, content: content, tool_id: tool.id, borrower_id: rand(1..10))
+
 
 
 end
