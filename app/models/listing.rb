@@ -5,16 +5,6 @@ class Listing < ApplicationRecord
   validates :notes, length: {in: 1..250}
   # belongs_to :lender, :class_name => "User", through: tool
 
-  def self.search(search)
-     sql = <<-SQL
-      SELECT listings.* FROM listings
-      JOIN tools ON listings.tool_id = tools.id
-      JOIN users ON tools.lender_id = users.id
-      WHERE UPPER(listings.title) LIKE UPPER('%#{search}%')
-      OR users.zip_code = #{search.to_i}
-      SQL
-    self.find_by_sql(sql)
-  end
 
   def find_lender
     self.tool.lender
