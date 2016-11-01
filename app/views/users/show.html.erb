@@ -1,53 +1,64 @@
-<h2>Hi, <%=@user.name%></h2>
+<head>
+  <link rel="stylesheet" href="/css/users_show.css" />
+</head>
 
-<h3>Search for a listing:</h3>
+<div class="container">
 
-<%= form_tag listings_path, :method => :get do %>
-  <%= label_tag "Search" %>
-  <%= text_field_tag :search %>
-  <%= submit_tag "Submit" %>
-<% end %>
-<%= button_to 'Show All Listings', listings_path, :method => :get  %>
+  <div class="row">
+    <h3>Your tools</h3>
+     <%= button_to 'Add a Tool', new_tool_path, :method => :get, class: 'btn btn-primary' %>
+      <ul>
+      <% @user.tools.each do |tool| %>
+        <li><%= link_to(tool.name, tool_path(tool)) %></li>
+        <% end %>
+      </ul>
+  <hr />
+  </div><!--.row-->
+  <div class="row">
+    <h3>Your listings:</h3>
+    <ul>
+      <% @user.tools.with_listings.map do |tool| %>
+        <li><%= link_to(tool.listing.name, tool.listing(tool.listing)) %></li>
+      <% end %>
 
+      <%= form_tag listings_path, :method => :get do %>
+        <%= label_tag "Search" %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "Submit", class: 'btn btn-primary' %>
+      <% end %>
+      <br />
+    <%= button_to 'Show All Listings', listings_path, :method => :get, class: 'btn btn-primary'   %>
+    </ul>
+    <hr />
+  </div><!--.row-->
 
-<h3>Personal Information</h3>
-<ul>
-  <li>Address: <%= @user.location %></li>
-  <li>Zip Code: <%= @user.zip_code %></li>
-  <li>Email: <%= @user.email %></li>
-  <iframe
-      width="600"
-      height="450"
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Personal Information</h3>
+      <ul>
+        <li>Address: <%= @user.location %></li>
+        <li>Zip Code: <%= @user.zip_code %></li>
+        <li>Email: <%= @user.email %></li>
+      </ul>
+      <%= button_to 'Edit User', edit_user_path(@user), :method => :get, class: 'btn btn-warning' %>
+      <%= button_to 'Delete Account', user_path(@user), :method => :delete, class: 'btn btn-danger' %>
+
+    </div><!--.col-md-6-->
+    <div class="col-md-6">
+      <iframe
+      width="300"
+      height="225"
       frameborder="0" style="border:0"
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYV-lwaMb8p0Hz04ILnsVSvHDZD2pZ7rc
         &q=<%=@user.zip_code%>" allowfullscreen>
-  </iframe>
-</ul>
+    </iframe>
+    </div><!--.col-md-6-->
+  </div><!--.row-->
+  
+  <div class="row">
+    <h3>Site Analytics</h3>
+    <%= button_to 'Analytics', tools_path, :method => :get, class: 'btn btn-primary'   %>
+  </div><!--.row-->
+    
 
-<hr />
-
-<h3>Your tools:</h3>
-<ul>
-<% @user.tools.each do |tool| %>
-  <li><%= link_to(tool.name, tool_path(tool)) %></li>
-  <% end %>
-</ul>
-
-<%= button_to 'Add a Tool', new_tool_path, :method => :get %>
-
-<hr />
-
-<h3>Your listings:</h3>
-<ul>
-  <% @user.tools.with_listings.map do |tool| %>
-    <li><%= link_to(tool.listing.name, tool.listing(tool.listing)) %></li>
-
-  <% end %>
-</ul>
-<br>
-<hr />
-
-<p><%= button_to 'Edit User', edit_user_path(@user), :method => :get  %>
-  <%= button_to 'Log Out', session_path(@user), :method => :delete  %>
-  <%= button_to 'Delete Account', user_path(@user), :method => :delete  %>
-  <%= button_to 'Analytics', tools_path, :method => :get  %></p>
+</div><!--.container-->

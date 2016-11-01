@@ -13,7 +13,6 @@ class Listing < ApplicationRecord
       WHERE UPPER(listings.name) LIKE UPPER('%#{search}%')
       OR users.zip_code = #{search.to_i}
       SQL
-
     self.find_by_sql(sql)
   end
 
@@ -25,7 +24,7 @@ class Listing < ApplicationRecord
   def tool_name
     Tool.find(self.tool_id).name
   end
-
+  
   # def self.by_zip_code(zip_code)
   #   sql = <<-SQL
   #     SELECT users.zip_code, tools.name FROM listings
@@ -47,6 +46,4 @@ class Listing < ApplicationRecord
   def select_available_listings(list)
     list.select {|listing| listing.tool.availability == "Available" }
   end
-
-
 end

@@ -1,40 +1,46 @@
-Sign up!
+<head>
+  <link rel="stylesheet" href="/css/users_new.css" />
+</head>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@user.errors.count, "error") %>
-      prohibited this listing from being saved:
-    </h2>
+<div class="container">
+    <h1>Sign up for Tul!</h1>
 
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <% if @user.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2>
+          <%= pluralize(@user.errors.count, "error") %>
+          prohibited this listing from being saved:
+        </h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    </ul>
-  </div>
-<% end %>
 
 
-<%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :address %>
-    <%= f.text_field :location %>
-    <br>
-    <%= f.label :zip_code %>
-    <%= f.text_field :zip_code %>
-    <br>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :password %>
-    <%= f.text_field :password %>
-    <br>
-    <%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %>
-    <br>
+    <%= form_for @user do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label :address %>
+        <%= f.text_field :location %>
+        <br>
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code %>
+        <br>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <br>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+        <br>
 
-    <%= f.submit %>
-  <% end %>
+        <%= f.submit "Sign Up"%>
+      <% end %>
+</div><!--.container-->
