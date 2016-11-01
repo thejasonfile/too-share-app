@@ -5,7 +5,7 @@ class APIMaps
       SELECT listings.* FROM listings
       JOIN tools ON listings.tool_id = tools.id
       JOIN users ON tools.lender_id = users.id
-      WHERE UPPER(listings.name) LIKE UPPER('%#{search}%')
+      WHERE UPPER(listings.title) LIKE UPPER('%#{search}%')
       OR users.zip_code = #{search.to_i}
       SQL
     Listing.find_by_sql(sql)

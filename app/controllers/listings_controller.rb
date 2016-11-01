@@ -20,7 +20,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = Listing.new(notes: params[:listing][:notes], name: params[:listing][:title], tool_id: params[:listing][:tool_id])
+    @listing = Listing.new(notes: params[:listing][:notes], title: params[:listing][:title], tool_id: params[:listing][:tool_id])
     @user = User.find(session[:user_id])
     if @listing.save
       redirect_to user_path(@user)
@@ -45,7 +45,7 @@ class ListingsController < ApplicationController
   def update
     @user = User.find(session[:user_id])
     @listing = Listing.find(params[:id])
-    @listing.update(notes: params[:listing][:notes], name: params[:listing][:title])
+    @listing.update(notes: params[:listing][:notes], title: params[:listing][:title])
     if @listing.valid?
       @listing.save
       redirect_to user_path(@user)
