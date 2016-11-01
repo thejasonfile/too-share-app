@@ -1,8 +1,8 @@
 <h1>Edit Your Listing</h1>
 
 <%= form_for @listing do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, :value => @listing.name %> <br />
+  <%= f.label :title %>
+  <%= f.text_field :title, :value => @listing.title %> <br />
   <%= f.label :notes %>
   <%= f.text_field :notes, :value => @listing.notes %> <br />
   <%= f.submit %>
