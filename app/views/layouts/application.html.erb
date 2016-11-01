@@ -36,12 +36,14 @@
             <% end %>
           <% else %>
             <span class="greeting">Hello, <%= User.find(current_user).name %></span><%= button_to 'Log Out', session_path(current_user), :method => :delete  %>
+            <%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>
           <% end %>
         </ul> 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+    <div class="container">
     <%= yield %>
-     
+    </div><!--.container-->
   </body>
 </html>

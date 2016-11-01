@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @user= User.find(session[:user_id])
     @review = Review.new(rating: params[:review][:rating], content: params[:review][:content], tool_id: params[:review][:tool_id], borrower_id: @user.id)
     @tools = @user.tools
-  @tool = Tool.find(@review.tool_id)
+    @tool = Tool.find(@review.tool_id)
     if @review.save
 
       redirect_to listing_path(@tool.listing)

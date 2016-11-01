@@ -1,0 +1,8 @@
+th {
+  text-decoration: underline;
+  padding-bottom: 0.8em;
+}
+
+.listing-row:nth-child(odd) {
+  background: #ccc;
+}

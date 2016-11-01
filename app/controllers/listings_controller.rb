@@ -4,15 +4,13 @@ class ListingsController < ApplicationController
     if params[:search]
       @listings = APIMaps.search(params[:search]).select {|listing| listing.tool.available? }
     else
-      @listings = Listing.all.select {|listing| listing.tool.available? }
+      @listings = Listing.all#.select {|listing| listing.tool.available? }
     end
   end
 
     # if params[:zip_code]
     #   @zip_code_search = Listing.by_zip_code(params[:zip_code])
     # end
-
-
 
   def new
       @listing = Listing.new

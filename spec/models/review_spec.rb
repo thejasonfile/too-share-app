@@ -63,6 +63,14 @@ let(:review) {FactoryGirl.create :review, :borrower_id => borrower.id, :tool_id 
     end
   end
 
+  describe '.number_of_solid_reviews' do
+    it "should increment solid review count if solid review is saved" do
+      expect do
+        review = Review.create(:rating => 5, :content => "Did the job well but not that well. Also I chopped my finger off by accident. But that just means the blade is sharp enough to the job. I still recommend it. Enough to spend all this time writing it. Good day!", :tool => tool, :borrower => borrower)
+      end.to change(Review, :number_of_solid_reviews).by(1)
+    end
+  end
+
 
 
 end

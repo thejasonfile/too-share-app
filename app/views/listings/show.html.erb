@@ -1,4 +1,4 @@
-<h1><%= @listing.name %></h1>
+<h1><%= @listing.title %></h1>
 <ul>
   <li>Tool: <%= @tool.name %></li>
   <li>Safety Level: <%= @tool.safety_level%></li>
@@ -26,15 +26,19 @@ Reviews:<br>
   <br>
   <% end %>
   <br>
-  <% end%>
+  <% end %>
 
 <% if @user.id != @tool.lender_id %>
-<%= button_to 'Review This Listing', new_review_path, :method => :get  %>
+  <%= button_to 'Review This Listing', new_review_path, :method => :get  %>
+
+  <%= form_tag rentals_path do %>
+  <%= hidden_field_tag 'listing_id', @listing.id %>
+  <%= submit_tag 'Rent This Tool' %>
+  <% end %>
+
 <% end %>
 <% if @user.id == @tool.lender_id %>
 <%= button_to 'Edit Listing', edit_listing_path(@listing), :method => :get  %>
 <%= button_to 'Delete Listing', listing_path(@listing), :method => :delete  %></p>
 <%= button_to 'Return to Tool', tool_path(@tool), :method => :get %>
 <% end %>
-
-<%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>

@@ -1,3 +1,7 @@
+<head>
+  <link rel="stylesheet" href="/css/listing_index.css" />
+</head>
+
 <h1>All Listings</h1>
 
 <h3>Search for a listing:</h3>
@@ -9,17 +13,17 @@
 <% end %>
 <br />
 <table>
-  <tr>
-    <th>Listing Name</th>
-    <th>Tool</th>
-    <th>Notes</th>
-  </tr>
+    <tr class="table-header-row">
+      <th class="col-md-4">Listing Name</th>
+      <th class="col-md-4">Tool</th>
+      <th class="col-md-4">Notes</th>
+    </tr>
 <% @listings.each do |listing| %>
-  <tr>
-    <td><%= link_to listing.name, listing_path(listing) %></td>
-    <td><%= listing.tool_name %></td>
-    <td><%= listing.notes %></td>
-  </tr>
+    <tr class="listing-row">
+      <td><%= link_to listing.title, listing_path(listing) %></td>
+      <td><%= listing.tool_name %></td>
+      <td><%= listing.notes %></td>
+    </tr>
 <%end%>
 </table>
 <br />
@@ -35,4 +39,3 @@
   <% end %>
 
 <br />
-<%= button_to 'Return to Your Page', user_path(session[:user_id]), :method => :get  %>

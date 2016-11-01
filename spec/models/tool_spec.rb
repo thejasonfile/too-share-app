@@ -40,6 +40,12 @@ RSpec.describe Tool, type: :model do
     expect(Tool.new(missing_condition)).to be_invalid
   end
 
+  describe "proper_tool_name" do
+    it "capitalizes a tool name" do
+      tool = Tool.new(name: "tool")
+      expect(tool.proper_tool_name(tool.name)).to eq("Tool")
+    end
+
   it "has a method 'average_review' that gives you the average rating for a tool" do
   expect(tool.average_review).to eq("This has no reviews yet")
   end
@@ -47,7 +53,6 @@ RSpec.describe Tool, type: :model do
   it "has a method 'has a listing?' that returns whether tool has a listing" do
     tool.listing = listing
     expect(tool.has_listing?).to eq(listing)
-
-
+  end
   end
 end

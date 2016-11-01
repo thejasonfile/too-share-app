@@ -18,7 +18,7 @@
     <h3>Your listings:</h3>
     <ul>
       <% @user.tools.with_listings.map do |tool| %>
-        <li><%= link_to(tool.listing.name, tool.listing(tool.listing)) %></li>
+        <li><%= link_to(tool.listing.title, tool.listing(tool.listing)) %></li>
       <% end %>
 
       <%= form_tag listings_path, :method => :get do %>
@@ -54,11 +54,11 @@
     </iframe>
     </div><!--.col-md-6-->
   </div><!--.row-->
-  
+
   <div class="row">
     <h3>Site Analytics</h3>
     <%= button_to 'Analytics', tools_path, :method => :get, class: 'btn btn-primary'   %>
   </div><!--.row-->
-    
+
 
 </div><!--.container-->
