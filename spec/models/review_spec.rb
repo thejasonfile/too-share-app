@@ -29,9 +29,13 @@ let(:review) {FactoryGirl.create :review, :borrower_id => borrower.id, :tool_id 
     expect(Review.new(content: "old")).not_to be_valid
   end
 
-  # it "belongs to one tool" do
-  #   expect(tool.reviews).to include(review)
-  # end
+  it "belongs to one tool" do
+    expect(tool.reviews).to include(review)
+  end
+
+  it "belongs to one borrower" do
+    expect(borrower.reviews).to include(review)
+  end
 
   it "has a method 'worth_borrowing?' that says if it's worth borrowing" do
     review = Review.create(:rating => 5, :content => "Did the job")
@@ -50,6 +54,14 @@ let(:review) {FactoryGirl.create :review, :borrower_id => borrower.id, :tool_id 
       end.to change(Review, :number_of_reviews).by(0)
     end
   end
+
+  # describe '.number_of_reviews' do
+  #   it "should increment review count if review is saved" do
+  #     expect do
+  #       Review.create(:rating => 5, :content => "Did the job")
+  #     end.to change(Review, :number_of_reviews).by(1)
+  #   end
+  # end
 
 
 end

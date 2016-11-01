@@ -28,4 +28,8 @@ RSpec.describe Listing, type: :model do
   it "is invalid without notes" do
     expect(Listing.new(missing_notes)).to be_invalid
   end
+
+  it "belongs to one tool" do
+    expect(listing.tool).to eq(tool)
+  end
 end
