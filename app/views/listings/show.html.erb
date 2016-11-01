@@ -26,11 +26,16 @@ Reviews:<br>
   <br>
   <% end %>
   <br>
-  <% end%>
+  <% end %>
 
 <% if @user.id != @tool.lender_id %>
-<%= button_to 'Review This Listing', new_review_path, :method => :get  %>
-<%= button_to 'Rent This Tool', rentals_path %>
+  <%= button_to 'Review This Listing', new_review_path, :method => :get  %>
+
+  <%= form_tag rentals_path do %>
+  <%= hidden_field_tag 'listing_id', @listing.id %>
+  <%= submit_tag 'Rent This Tool' %>
+  <% end %>
+
 <% end %>
 <% if @user.id == @tool.lender_id %>
 <%= button_to 'Edit Listing', edit_listing_path(@listing), :method => :get  %>

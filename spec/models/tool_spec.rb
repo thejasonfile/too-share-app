@@ -53,6 +53,6 @@ RSpec.describe Tool, type: :model do
   it "has a method 'has a listing?' that returns whether tool has a listing" do
     tool.listing = listing
     expect(tool.has_listing?).to eq(listing)
-
+  end
   end
 end

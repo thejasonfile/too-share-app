@@ -1,0 +1,7 @@
+<h3>Rental # <%= @rental.id %></h3>
+
+<ul>
+  <li>Borrower: <%= @rental.borrower.name %></li>
+  <li>Listing: <%= @rental.listing.name %></li>
+  <li>Tool: <%= @rental.find_tool %></li>
+</ul>

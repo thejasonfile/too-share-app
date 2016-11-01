@@ -2,8 +2,12 @@ class RentalsController < ApplicationController
   # def index
   # end
   def create
-    byebug
-    # Rental.new(borrower_id: session[:user_id], lender_id:)
+    @rental = Rental.create(borrower_id: session[:user_id], listing_id: params[:listing_id])
+    redirect_to @rental
+  end
+
+  def show
+    @rental = Rental.find(params[:id])
   end
 
   def destroy
